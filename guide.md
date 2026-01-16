@@ -11,3 +11,8 @@ Notice how the layout remains consistent. The title is at the top, followed by t
 # Step Three: Completion
 ![Done](https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=500)
 You have reached the end of the markdown fetch tutorial!
+
+---
+# Step Four: Yay
+![Done](https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=500)
+You have reached the end of the markdown fetch tutorial!
