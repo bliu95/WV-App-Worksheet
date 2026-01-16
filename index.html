@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Step Viewer</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: #eef2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            width: 100%;
+            max-width: 650px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #e0e0e0;
+        }
+
+        /* 1. Header (Title) Area */
+        .header-section {
+            padding: 1.5rem 2rem 1rem 2rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .step-badge {
+            display: inline-block;
+            background-color: #e3f2fd;
+            color: #1976d2;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .step-title {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #2c3e50;
+        }
+
+        /* 2. Image Area */
+        .image-section {
+            width: 100%;
+            background-color: #fafafa;
+            display: flex;
+            justify-content: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .image-section img {
+            max-width: 90%;
+            max-height: 350px; /* Limits height so it fits on screen */
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            object-fit: contain;
+        }
+
+        /* 3. Text Area */
+        .text-section {
+            padding: 1.5rem 2rem;
+            flex-grow: 1;
+            color: #4a5568;
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+
+        /* 4. Controls Area */
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            padding: 1.25rem 2rem;
+            background-color: #fff;
+            border-top: 1px solid #eee;
+        }
+
+        button {
+            background-color: #2d3748;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #1a202c;
+            transform: translateY(-1px);
+        }
+
+        button:disabled {
+            background-color: #cbd5e0;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="header-section">
+            <div id="step-badge" class="step-badge">Step 1</div>
+            <h2 id="step-title" class="step-title">Loading...</h2>
+        </div>
+
+        <div class="image-section">
+            <img id="step-image" src="" alt="Step visualization">
+        </div>
+
+        <div id="step-text" class="text-section">
+            </div>
+
+        <div class="controls">
+            <button id="btn-back" onclick="changeStep(-1)">Back</button>
+            <button id="btn-next" onclick="changeStep(1)">Next</button>
+        </div>
+    </div>
+
+    <script>
+        const markdownContent = `
+# Prepare the Workspace
+![Workspace Setup](https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80)
+First, ensure your desk is clean. Open your terminal and navigate to the project root directory. You should see a \`package.json\` file.
+
+---
+
+# Initialize Database
+![Database Config](https://images.unsplash.com/photo-1544383835-bda2bc66a55d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80)
+Run the migration script using the command line. This will create the necessary tables.
+<br><br>
+**Note:** Ensure Docker is running before executing this step.
+
+---
+
+# Launch Application
+![Launch](https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80)
+Finally, run \`npm start\`. Open your browser to localhost:3000 to see the result.
+`;
+
+        // ==========================================
+        // LOGIC: PARSER & VIEWER
+        // ==========================================
+        
+        let steps = [];
+        let currentIndex = 0;
+
+        // 1. Simple Markdown Parser
+        function parseMarkdown(md) {
+            // Split by "---" to get individual steps
+            const rawSteps = md.split('---').map(s => s.trim()).filter(s => s.length > 0);
+            
+            return rawSteps.map(stepContent => {
+                const lines = stepContent.split('\n');
+                let title = "Step";
+                let image = "";
+                let textLines = [];
+
+                lines.forEach(line => {
+                    const trimmed = line.trim();
+                    // Detect Title (# Title)
+                    if (trimmed.startsWith('# ')) {
+                        title = trimmed.replace('# ', '');
+                    } 
+                    // Detect Image (![alt](url))
+                    else if (trimmed.match(/!\[.*?\]\(.*?\)/)) {
+                        const match = trimmed.match(/\((.*?)\)/); // Extract content inside ()
+                        if (match) image = match[1];
+                    } 
+                    // Detect Text
+                    else if (trimmed.length > 0) {
+                        // Simple parser for bold and code
+                        let parsedLine = trimmed
+                            .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>') // Bold
+                            .replace(/`(.*?)`/g, '<code style="background:#eee;padding:2px 4px;border-radius:4px">$1</code>'); // Inline Code
+                        textLines.push(parsedLine);
+                    }
+                });
+
+                return {
+                    title: title,
+                    image: image,
+                    text: textLines.join('<br>')
+                };
+            });
+        }
+
+        // 2. Render Logic
+        function renderStep() {
+            if (steps.length === 0) return;
+
+            const current = steps[currentIndex];
+            
+            // Text Elements
+            document.getElementById('step-badge').innerText = `Step ${currentIndex + 1} of ${steps.length}`;
+            document.getElementById('step-title').innerText = current.title;
+            document.getElementById('step-text').innerHTML = current.text;
+            
+            // Image Element
+            const imgEl = document.getElementById('step-image');
+            if (current.image) {
+                imgEl.src = current.image;
+                imgEl.style.display = 'block';
+            } else {
+                imgEl.style.display = 'none';
+            }
+
+            // Buttons
+            document.getElementById('btn-back').disabled = currentIndex === 0;
+            const nextBtn = document.getElementById('btn-next');
+            
+            if (currentIndex === steps.length - 1) {
+                nextBtn.innerText = "Start Over";
+                // nextBtn.disabled = true; // Uncomment if you want to disable at the end
+            } else {
+                nextBtn.innerText = "Next";
+                nextBtn.disabled = false;
+            }
+        }
+
+        // 3. Navigation Logic
+        function changeStep(dir) {
+            const nextIndex = currentIndex + dir;
+            
+            document.getElementById('btn-back').disabled = currentIndex === 0;
+            const nextBtn = document.getElementById('btn-next');
+
+            if (nextBtn.innerText === "Start Over") {
+                currentIndex = 0;
+                renderStep();
+            } else if (nextIndex >= 0 && nextIndex < steps.length) {
+                currentIndex = nextIndex;
+                renderStep();
+            }
+        }
+
+        // Initialization
+        steps = parseMarkdown(markdownContent);
+        renderStep();
+
+    </script>
+</body>
+</html>
