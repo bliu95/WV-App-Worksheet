@@ -218,6 +218,7 @@
 
         // --- 3. Render View ---
         function renderStep() {
+          console.log(steps);
             if (steps.length === 0) return;
             const current = steps[currentIndex];
 
@@ -241,6 +242,7 @@
             const nextBtn = document.getElementById('btn-next');
             if (currentIndex === steps.length - 1) {
                 nextBtn.innerText = "Finish";
+                nextBtn.disabled = true;
             } else {
                 nextBtn.innerText = "Next";
                 nextBtn.disabled = false;
