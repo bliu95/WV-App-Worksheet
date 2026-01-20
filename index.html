@@ -13,12 +13,13 @@
         align-items: center;
         min-height: 100vh;
         margin: 0;
+        padding: 20px;
       }
 
       .card {
         background: white;
         width: 100%;
-        max-width: 1000px;
+        max-width: 800px;
         border-radius: 12px;
         box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
         overflow: hidden;
@@ -33,6 +34,7 @@
         text-align: center;
         color: #666;
         font-size: 1.2rem;
+        display: none; /* Hidden by default */
       }
 
       /* 1. Header (Title) */
@@ -70,16 +72,16 @@
         align-items: center;
         padding: 1rem 0;
         border-bottom: 1px solid #eee;
-        min-height: 350px; /* Prevent layout shift */
+        min-height: 300px;
       }
 
       .image-section img {
         max-width: 95%;
-        max-height: 450px;
+        max-height: 400px;
         border-radius: 6px;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         object-fit: contain;
-        display: none; /* Hidden until loaded */
+        display: none;
       }
 
       /* 3. Text Component */
@@ -89,9 +91,10 @@
         line-height: 1.6;
         font-size: 1.05rem;
         flex-grow: 1;
+        min-height: 150px;
       }
 
-      /* 4. Controls */
+      /* 4. Controls (Next/Back) */
       .controls {
         display: flex;
         justify-content: space-between;
@@ -104,7 +107,7 @@
         background-color: #1a73e8;
         color: white;
         border: none;
-        padding: 12px 28px;
+        padding: 10px 24px;
         border-radius: 6px;
         font-size: 1rem;
         font-weight: 500;
@@ -112,129 +115,155 @@
         transition: background 0.2s;
       }
 
-      button:hover {
-        background-color: #1557b0;
+      button:hover { background-color: #1557b0; }
+      button:disabled { background-color: #dadce0; color: #80868b; cursor: not-allowed; }
+
+      /* 5. Selector Area (Bottom) */
+      .selector-area {
+        background-color: #f1f3f4;
+        padding: 1.5rem 2rem;
+        border-top: 1px solid #e0e0e0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
       }
 
-      button:disabled {
-        background-color: #dadce0;
-        color: #80868b;
-        cursor: not-allowed;
+      .selector-area label {
+        font-weight: 600;
+        color: #444;
+        margin-right: 10px;
+      }
+
+      select {
+        padding: 8px 12px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        font-size: 1rem;
+        flex-grow: 1;
+        max-width: 300px;
       }
     </style>
   </head>
   <body>
     <div class="card">
+      
       <div id="loading-msg" class="loading-state">
-        Loading guide...<br />
-        <span style="font-size: 0.8rem; color: #999"
-          >(Make sure you are running a local server)</span
-        >
+        Loading...
       </div>
 
-      <div id="main-content" style="display: none">
+      <div id="main-content">
         <div class="header-section">
           <div id="step-badge" class="step-badge">Step 1</div>
-          <h2 id="step-title"></h2>
+          <h2 id="step-title">Welcome</h2>
         </div>
 
         <div class="image-section">
           <img id="step-image" src="" alt="Step visualization" />
         </div>
 
-        <div id="step-text" class="text-section"></div>
+        <div id="step-text" class="text-section">
+            Select a lesson below to begin.
+        </div>
 
         <div class="controls">
           <button id="btn-back" onclick="changeStep(-1)">Back</button>
           <button id="btn-next" onclick="changeStep(1)">Next</button>
         </div>
       </div>
+
+      <div class="selector-area">
+          <label for="lesson-select">Select Lesson:</label>
+          <select id="lesson-select" onchange="handleLessonChange()">
+              <option value="./Weeks/Week 2/w2_guide.md">Week 2</option>
+          </select>
+      </div>
+
     </div>
 
     <script>
-      // CONFIGURATION: Name of your file
-      const FILENAME = "guide.md";
-
       let steps = [];
       let currentIndex = 0;
 
-      // --- 1. Fetch File ---
-      fetch(FILENAME)
-        .then((response) => {
-          if (!response.ok) throw new Error("Could not find " + FILENAME);
-          return response.text();
-        })
-        .then((text) => {
-          steps = parseMarkdown(text);
+      // 1. Initialize
+      function init() {
+          const selector = document.getElementById('lesson-select');
+          // Load the first option automatically on startup
+          loadLesson(selector.value);
+      }
 
-          // Hide loading, show content
-          document.getElementById("loading-msg").style.display = "none";
-          document.getElementById("main-content").style.display = "block";
+      // 2. Handle Dropdown Change
+      function handleLessonChange() {
+          const selector = document.getElementById('lesson-select');
+          const filename = selector.value;
+          loadLesson(filename);
+      }
 
-          renderStep();
-        })
-        .catch((error) => {
-          document.getElementById("loading-msg").innerHTML =
-            `Error loading file.<br><br> ${error.message}`;
-          console.error(error);
-        });
+      // 3. Fetch Logic
+      function loadLesson(filename) {
+          // Reset UI
+          currentIndex = 0;
+          document.getElementById("main-content").style.opacity = "0.5"; // Dim content while loading
+          document.getElementById("loading-msg").style.display = "block";
+          
+          fetch(filename)
+            .then((response) => {
+              if (!response.ok) throw new Error("Could not find " + filename);
+              return response.text();
+            })
+            .then((text) => {
+              steps = parseMarkdown(text);
+              
+              document.getElementById("loading-msg").style.display = "none";
+              document.getElementById("main-content").style.opacity = "1";
+              
+              renderStep();
+            })
+            .catch((error) => {
+              document.getElementById("loading-msg").innerHTML = `Error: ${error.message}`;
+              document.getElementById("loading-msg").style.display = "block";
+              console.error(error);
+            });
+      }
 
-      // --- 2. Parse Markdown ---
+      // 4. Parse Markdown
       function parseMarkdown(md) {
-        // Split steps by "---" on a new line
         const rawSteps = md.split(/^---$/m);
 
         return rawSteps
           .map((stepContent) => {
             const lines = stepContent.trim().split("\n");
-
             let title = "Step";
             let image = "";
             let textLines = [];
 
             lines.forEach((line) => {
               const trimmed = line.trim();
-
-              // Detect Title: "# Title"
               if (trimmed.startsWith("# ")) {
                 title = trimmed.replace("# ", "");
-              }
-              // Detect Image: "![alt](url)"
-              else if (trimmed.match(/!\[.*?\]\(.*?\)/)) {
-                const match = trimmed.match(/\((.*?)\)/); // Extract URL inside ()
+              } else if (trimmed.match(/!\[.*?\]\(.*?\)/)) {
+                const match = trimmed.match(/\((.*?)\)/);
                 if (match) image = match[1];
-              }
-              // Detect Text (ignore empty lines)
-              else if (trimmed.length > 0) {
-                // Simple formatting (Bold and Code)
+              } else if (trimmed.length > 0) {
                 let parsed = trimmed
                   .replace(/\*\*(.*?)\*\*/g, "<b>$1</b>")
-                  .replace(
-                    /`(.*?)`/g,
-                    '<code style="background:#eee;padding:2px 5px;border-radius:4px">$1</code>',
-                  );
+                  .replace(/`(.*?)`/g, '<code style="background:#eee;padding:2px 5px;border-radius:4px">$1</code>');
                 textLines.push(parsed);
               }
             });
-
             return { title, image, text: textLines.join("<br>") };
           })
-          .filter((s) => s.text || s.image); // remove empty steps
+          .filter((s) => s.text || s.image);
       }
 
-      // --- 3. Render View ---
+      // 5. Render View
       function renderStep() {
-        console.log(steps);
         if (steps.length === 0) return;
         const current = steps[currentIndex];
 
-        // Update Text Elements
-        document.getElementById("step-badge").innerText =
-          `Step ${currentIndex + 1} of ${steps.length}`;
+        document.getElementById("step-badge").innerText = `Step ${currentIndex + 1} of ${steps.length}`;
         document.getElementById("step-title").innerText = current.title;
         document.getElementById("step-text").innerHTML = current.text;
 
-        // Update Image
         const imgEl = document.getElementById("step-image");
         if (current.image) {
           imgEl.src = current.image;
@@ -243,9 +272,8 @@
           imgEl.style.display = "none";
         }
 
-        // Update Buttons
         document.getElementById("btn-back").disabled = currentIndex === 0;
-
+        
         const nextBtn = document.getElementById("btn-next");
         if (currentIndex === steps.length - 1) {
           nextBtn.innerText = "Finish";
@@ -256,7 +284,6 @@
         }
       }
 
-      // --- 4. Navigation ---
       function changeStep(direction) {
         const nextIndex = currentIndex + direction;
         if (nextIndex >= 0 && nextIndex < steps.length) {
@@ -264,6 +291,9 @@
           renderStep();
         }
       }
+
+      // Start the app
+      init();
     </script>
   </body>
 </html>
