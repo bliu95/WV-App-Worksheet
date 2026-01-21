@@ -91,7 +91,7 @@
         line-height: 1.6;
         font-size: 1.05rem;
         flex-grow: 1;
-        min-height: 150px;
+        min-height: 100px;
       }
 
       /* 4. Controls (Next/Back) */
@@ -157,7 +157,7 @@
           <h2 id="step-title">Welcome</h2>
         </div>
 
-        <div class="image-section">
+        <div class="image-section" id="image-block">
           <img id="step-image" src="" alt="Step visualization" />
         </div>
 
@@ -268,8 +268,10 @@
         if (current.image) {
           imgEl.src = current.image;
           imgEl.style.display = "block";
+          document.getElementById("image-block").style.display = "flex";
         } else {
           imgEl.style.display = "none";
+          document.getElementById("image-block").style.display = "none";
         }
 
         document.getElementById("btn-back").disabled = currentIndex === 0;
