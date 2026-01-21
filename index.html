@@ -172,10 +172,21 @@
       </div>
 
       <div class="selector-area">
-          <label for="lesson-select">Select Lesson:</label>
-          <select id="lesson-select" onchange="handleLessonChange()">
-              <option value="./Weeks/Week 2/w2_guide.md">Week 2</option>
-          </select>
+          <div style="display:flex; gap: 15px; width: 100%;">
+              
+              <div style="flex: 1;">
+                  <label for="week-select" style="display:block; margin-bottom:5px;">Week:</label>
+                  <select id="week-select" style="width:100%" onchange="updateLessonOptions()">
+                      </select>
+              </div>
+
+              <div style="flex: 2;">
+                  <label for="lesson-select" style="display:block; margin-bottom:5px;">Lesson:</label>
+                  <select id="lesson-select" style="width:100%" onchange="handleLessonChange()">
+                      </select>
+              </div>
+
+          </div>
       </div>
 
     </div>
@@ -184,21 +195,60 @@
       let steps = [];
       let currentIndex = 0;
 
-      // 1. Initialize
+      const lessonData = {
+          "Week 2": [
+              { name: "Main Lesson 1", file: "./Weeks/Week 2/w2p1_guide.md" }
+          ],
+      };
+
+      // Initialize
       function init() {
-          const selector = document.getElementById('lesson-select');
-          // Load the first option automatically on startup
-          loadLesson(selector.value);
+          const weekSelect = document.getElementById('week-select');
+          
+          // Populate the Week Dropdown
+          Object.keys(lessonData).forEach(week => {
+              const option = document.createElement('option');
+              option.value = week;
+              option.textContent = week;
+              weekSelect.appendChild(option);
+          });
+
+          // Trigger the update to populate lessons for the first week
+          updateLessonOptions();
+          handleLessonChange();
       }
 
-      // 2. Handle Dropdown Change
+      function updateLessonOptions() {
+          const weekSelect = document.getElementById('week-select');
+          const lessonSelect = document.getElementById('lesson-select');
+          const selectedWeek = weekSelect.value;
+          
+          // Clear current lessons
+          lessonSelect.innerHTML = "";
+
+          // Get lessons for the selected week
+          const lessons = lessonData[selectedWeek];
+
+          // Populate Lesson Dropdown
+          lessons.forEach(lesson => {
+              const option = document.createElement('option');
+              option.value = lesson.file; // The value is the file path
+              option.textContent = lesson.name;
+              lessonSelect.appendChild(option);
+          });
+
+          // Automatically load the first lesson of the new week
+          handleLessonChange();
+      }
+
+      // Handle Dropdown Change
       function handleLessonChange() {
           const selector = document.getElementById('lesson-select');
           const filename = selector.value;
           loadLesson(filename);
       }
 
-      // 3. Fetch Logic
+      // Fetch Logic
       function loadLesson(filename) {
           // Reset UI
           currentIndex = 0;
@@ -225,7 +275,7 @@
             });
       }
 
-      // 4. Parse Markdown
+      // Parse Markdown
       function parseMarkdown(md) {
         const rawSteps = md.split(/^---$/m);
 
@@ -255,7 +305,7 @@
           .filter((s) => s.text || s.image);
       }
 
-      // 5. Render View
+      // Render View
       function renderStep() {
         if (steps.length === 0) return;
         const current = steps[currentIndex];
