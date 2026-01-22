@@ -176,13 +176,13 @@
               
               <div style="flex: 1;">
                   <label for="week-select" style="display:block; margin-bottom:5px;">Week:</label>
-                  <select id="week-select" style="width:100%" onchange="updateLessonOptions()">
+                  <select id="week-select" style="width:100%" onchange="handleWeekChange()">
                       </select>
               </div>
 
               <div style="flex: 2;">
-                  <label for="lesson-select" style="display:block; margin-bottom:5px;">Lesson:</label>
-                  <select id="lesson-select" style="width:100%" onchange="handleLessonChange()">
+                  <label for="section-select" style="display:block; margin-bottom:5px;">Section:</label>
+                  <select id="section-select" style="width:100%" onchange="handleSectionChange()">
                       </select>
               </div>
 
@@ -192,19 +192,19 @@
     </div>
 
     <script>
-      let steps = [];
-      let currentIndex = 0;
+      let allSteps = [];        // All steps from the markdown file
+      let sections = [];        // Array of sections, each with start/end indices
+      let currentSection = 0;   // Currently selected section index
+      let currentStepInSection = 0;  // Current step within the section
 
       const lessonData = {
-          "Week 2": [
-              { name: "Main Lesson 1", file: "./Weeks/Week 2/w2p1_guide.md" }
-          ],
+          "Week 2": "./Weeks/Week 2/w2_guide.md",
       };
 
       // Initialize
       function init() {
           const weekSelect = document.getElementById('week-select');
-          
+
           // Populate the Week Dropdown
           Object.keys(lessonData).forEach(week => {
               const option = document.createElement('option');
@@ -213,59 +213,44 @@
               weekSelect.appendChild(option);
           });
 
-          // Trigger the update to populate lessons for the first week
-          updateLessonOptions();
-          handleLessonChange();
+          // Load the first week
+          handleWeekChange();
       }
 
-      function updateLessonOptions() {
+      function handleWeekChange() {
           const weekSelect = document.getElementById('week-select');
-          const lessonSelect = document.getElementById('lesson-select');
           const selectedWeek = weekSelect.value;
-          
-          // Clear current lessons
-          lessonSelect.innerHTML = "";
-
-          // Get lessons for the selected week
-          const lessons = lessonData[selectedWeek];
-
-          // Populate Lesson Dropdown
-          lessons.forEach(lesson => {
-              const option = document.createElement('option');
-              option.value = lesson.file; // The value is the file path
-              option.textContent = lesson.name;
-              lessonSelect.appendChild(option);
-          });
-
-          // Automatically load the first lesson of the new week
-          handleLessonChange();
+          const filename = lessonData[selectedWeek];
+          loadMarkdownFile(filename);
       }
 
-      // Handle Dropdown Change
-      function handleLessonChange() {
-          const selector = document.getElementById('lesson-select');
-          const filename = selector.value;
-          loadLesson(filename);
+      function handleSectionChange() {
+          const sectionSelect = document.getElementById('section-select');
+          currentSection = parseInt(sectionSelect.value, 10);
+          currentStepInSection = 0;
+          renderStep();
       }
 
       // Fetch Logic
-      function loadLesson(filename) {
-          // Reset UI
-          currentIndex = 0;
-          document.getElementById("main-content").style.opacity = "0.5"; // Dim content while loading
+      function loadMarkdownFile(filename) {
+          currentSection = 0;
+          currentStepInSection = 0;
+          document.getElementById("main-content").style.opacity = "0.5";
           document.getElementById("loading-msg").style.display = "block";
-          
+
           fetch(filename)
             .then((response) => {
               if (!response.ok) throw new Error("Could not find " + filename);
               return response.text();
             })
             .then((text) => {
-              steps = parseMarkdown(text);
-              
+              allSteps = parseMarkdown(text);
+              sections = splitIntoSections(allSteps);
+
               document.getElementById("loading-msg").style.display = "none";
               document.getElementById("main-content").style.opacity = "1";
-              
+
+              populateSectionDropdown();
               renderStep();
             })
             .catch((error) => {
@@ -285,6 +270,8 @@
             let title = "Step";
             let image = "";
             let textLines = [];
+            let isCheckpoint = false;
+            let checkpointNumber = null;
 
             lines.forEach((line) => {
               const trimmed = line.trim();
@@ -294,23 +281,78 @@
                 const match = trimmed.match(/\((.*?)\)/);
                 if (match) image = match[1];
               } else if (trimmed.length > 0) {
+                // Check for checkpoint marker
+                const checkpointMatch = trimmed.match(/\[.*?Checkpoint #(\d+).*?\]/i);
+                if (checkpointMatch) {
+                  isCheckpoint = true;
+                  checkpointNumber = parseInt(checkpointMatch[1], 10);
+                }
                 let parsed = trimmed
                   .replace(/\*\*(.*?)\*\*/g, "<b>$1</b>")
                   .replace(/`(.*?)`/g, '<code style="background:#eee;padding:2px 5px;border-radius:4px">$1</code>');
                 textLines.push(parsed);
               }
             });
-            return { title, image, text: textLines.join("<br>") };
+            return { title, image, text: textLines.join("<br>"), isCheckpoint, checkpointNumber };
           })
           .filter((s) => s.text || s.image);
       }
 
+      // Split steps into sections based on checkpoints
+      function splitIntoSections(steps) {
+        const result = [];
+        let sectionStart = 0;
+
+        steps.forEach((step, index) => {
+          if (step.isCheckpoint) {
+            result.push({
+              name: `Section ${result.length + 1} (Checkpoint #${step.checkpointNumber})`,
+              startIndex: sectionStart,
+              endIndex: index
+            });
+            sectionStart = index + 1;
+          }
+        });
+
+        // If there are remaining steps after the last checkpoint, create a final section
+        if (sectionStart < steps.length) {
+          result.push({
+            name: `Section ${result.length + 1} (Final)`,
+            startIndex: sectionStart,
+            endIndex: steps.length - 1
+          });
+        }
+
+        return result;
+      }
+
+      function populateSectionDropdown() {
+        const sectionSelect = document.getElementById('section-select');
+        sectionSelect.innerHTML = "";
+
+        sections.forEach((section, index) => {
+          const option = document.createElement('option');
+          option.value = index;
+          option.textContent = section.name;
+          sectionSelect.appendChild(option);
+        });
+      }
+
+      // Get steps for current section
+      function getCurrentSectionSteps() {
+        if (sections.length === 0) return [];
+        const section = sections[currentSection];
+        return allSteps.slice(section.startIndex, section.endIndex + 1);
+      }
+
       // Render View
       function renderStep() {
-        if (steps.length === 0) return;
-        const current = steps[currentIndex];
+        const sectionSteps = getCurrentSectionSteps();
+        if (sectionSteps.length === 0) return;
 
-        document.getElementById("step-badge").innerText = `Step ${currentIndex + 1} of ${steps.length}`;
+        const current = sectionSteps[currentStepInSection];
+
+        document.getElementById("step-badge").innerText = `Step ${currentStepInSection + 1} of ${sectionSteps.length}`;
         document.getElementById("step-title").innerText = current.title;
         document.getElementById("step-text").innerHTML = current.text;
 
@@ -324,10 +366,10 @@
           document.getElementById("image-block").style.display = "none";
         }
 
-        document.getElementById("btn-back").disabled = currentIndex === 0;
-        
+        document.getElementById("btn-back").disabled = currentStepInSection === 0;
+
         const nextBtn = document.getElementById("btn-next");
-        if (currentIndex === steps.length - 1) {
+        if (currentStepInSection === sectionSteps.length - 1) {
           nextBtn.innerText = "Finish";
           nextBtn.disabled = true;
         } else {
@@ -337,9 +379,10 @@
       }
 
       function changeStep(direction) {
-        const nextIndex = currentIndex + direction;
-        if (nextIndex >= 0 && nextIndex < steps.length) {
-          currentIndex = nextIndex;
+        const sectionSteps = getCurrentSectionSteps();
+        const nextIndex = currentStepInSection + direction;
+        if (nextIndex >= 0 && nextIndex < sectionSteps.length) {
+          currentStepInSection = nextIndex;
           renderStep();
         }
       }
