@@ -174,59 +174,56 @@ If it works, you now have a fully-functional random number guesser!
 ![Setup](./Weeks/Week 2/images/w2_p2_1.png)
 In Part 2, we will create a real-time communication system. Two users will communicate: a Guesser makes guesses while a Clue Giver provides feedback.
 
-In a new project, add a <span style="background-color:#70ce9c;font-weight:bold;color:white">text input</span> for the two users to type in their message. Rename it to <span style="font-style: italics">Text_Input</span>.
+In a new project, add a text input for the two users to type in their message. We will rename it to "Text_Input".
 ---
 
 # High Low - Part 2: Real-Time Updates
 ![Setup](./Weeks/Week 2/images/w2_p2_2.png)
-Add a <span style="background-color:#70ce9c;font-weight:bold;color:white">button</span> for users to submit their message. Rename it to <span style="font-style: italics">Submit</span>.
+Add a button for users to submit their message. We will rename it to "Submit".
 ---
 
 # High Low - Part 2: Real-Time Updates
 ![Setup](./Weeks/Week 2/images/w2_p2_3.png)
-Add a <span style="background-color:#70ce9c;font-weight:bold;color:white">label</span> to display submitted messages. Rename it to <span style="font-style: italics">Message</span>.
-
-**Now, we will move onto blocks using cloud variables.**
+Add a label to display submitted messages. We will rename it to "Message".<br>
+**Now, we will move onto blocks.**
 ---
 
 # High Low - Part 2: Real-Time Updates
-<span style="font-weight:bold">Block:</span> <span style="background-color:#735ca5;font-weight:bold;color:white">cloud variable</span>
+<span style="font-weight:bold">Block:</span> <span style="font-weight:bold;">Cloud Variable</span>
 
 ![Block](./Weeks/Week 2/images/w2_p2_block_initCloudVar.png)
 
-<span style="font-style:italic">This block can be found in the <span style="font-weight:bold;color:#735ca5">Variables Blocks</span> drawer under <span style="font-weight:bold">Core Blocks.</span></span><br>
-The <span style="background-color:#735ca5;font-weight:bold;color:white">cloud variable</span> block allows you to store data in the cloud. This data can be accessed from multiple devices.
+Cloud variables allow you to store data in the cloud. This data can be accessed from multiple devices, which is suitable for data that your user may want to access from multiple devices.<br>
+Remember, this is the same <span style="background-color:#f87956;font-weight:bold;color:white">initialize variable to</span> block introduced in Part 1. Use the dropdown menu to select the <span style="background-color:#f7c9bd;font-weight:bold">cloud</span> variable type.
 ---
 
 # High Low - Part 2: Real-Time Updates
 ![Setup](./Weeks/Week 2/images/w2_p2_4.png)
-Create a <span style="background-color:#735ca5;font-weight:bold;color:white">cloud variable</span> with the <span style="background-color:#f87956;font-weight:bold;color:white">initialize variable to</span> block. Rename it to <span style="font-style: italics">text</span>.
-
-**Important:** Use a cloud variable, not an app variable!
+Create a cloud variable with the <span style="background-color:#f87956;font-weight:bold;color:white">initialize variable to</span> block. We will rename it to <span style="background-color:#f7c9bd;font-weight:bold">text</span>. We want to use a cloud variable instead of an app variable this time so that the data can be accessed from multiple devices.
 ---
 
 # High Low - Part 2: Real-Time Updates
 ![Setup](./Weeks/Week 2/images/w2_p2_5.png)
-Add the <span style="background-color:#f3aa44;font-weight:bold;color:white">when Submit Click</span> block for the button.
+Now, we want to add functionality to the button we added for the users to submit a message. First, add the <span style="background-color:#f3aa44;font-weight:bold;color:white">when Submit Click</span> block.
 ---
 
 # High Low - Part 2: Real-Time Updates
-<span style="font-weight:bold">Block:</span> <span style="background-color:#735ca5;font-weight:bold;color:white">set variable to</span>
+<span style="font-weight:bold">Block:</span> <span style="background-color:#f87956;font-weight:bold;color:white">set variable to</span>
 
 ![Block](./Weeks/Week 2/images/w2_p2_block_setVarTo.png)
 
-<span style="font-style:italic">This block can be found in the <span style="font-weight:bold;color:#735ca5">Variables Blocks</span> drawer under <span style="font-weight:bold">Core Blocks.</span></span><br>
-The <span style="background-color:#735ca5;font-weight:bold;color:white">set variable to</span> block allows you to set a variable within a block event.
+<span style="font-style:italic">This block can be found in the <span style="font-weight:bold;color:#f87956">Variables Blocks</span> drawer under <span style="font-weight:bold">Core Blocks.</span></span><br>
+The <span style="background-color:#f87956;font-weight:bold;color:white">set variable to</span> block allows you to set a variable to a value within a block event.
 ---
 
 # High Low - Part 2: Real-Time Updates
 ![Setup](./Weeks/Week 2/images/w2_p2_6.png)
-Connect the <span style="background-color:#735ca5;font-weight:bold;color:white">set cloud variable to</span> block to the <span style="background-color:#f3aa44;font-weight:bold;color:white">when Submit Click</span> block to update the cloud variable <span style="font-style: italics">text</span>.
+Connect the <span style="background-color:#f87956;font-weight:bold;color:white">set variable to</span> block to the <span style="background-color:#f3aa44;font-weight:bold;color:white">when Submit Click</span> block. We want the cloud variable <span style="background-color:#f7c9bd;font-weight:bold">text</span> to update when the "Submit" button is clicked.
 ---
 
 # High Low - Part 2: Real-Time Updates
 ![Setup](./Weeks/Week 2/images/w2_p2_7.png)
-Connect the <span style="background-color:#70ce9c;font-weight:bold;color:white">Text_Input's Text</span> block to the <span style="background-color:#735ca5;font-weight:bold;color:white">set cloud variable to</span> block to set the cloud variable <span style="font-style: italics">text</span>.
+Connect the <span style="background-color:#70ce9c;font-weight:bold;color:white">Text_Input's Text</span> block to the <span style="background-color:#f87956;font-weight:bold;color:white">set variable to</span> block to set the cloud variable <span style="background-color:#f7c9bd;font-weight:bold">text</span> to the text written in Text_Input when the “Submit” button is clicked, since we want that information to be accessible across multiple devices.
 ---
 
 # High Low - Part 2: Real-Time Updates
@@ -234,62 +231,54 @@ Connect the <span style="background-color:#70ce9c;font-weight:bold;color:white">
 
 ![Block](./Weeks/Week 2/images/w2_p2_block_whenVarChange.png)
 
-<span style="font-style:italic">This block can be found in the <span style="font-weight:bold;color:#f3aa44">Variables Blocks</span> drawer under <span style="font-weight:bold">Core Blocks</span> after creating a variable.</span><br>
-The <span style="background-color:#f3aa44;font-weight:bold;color:white">when variable initializes or changes</span> block is used to define how the app behaves when the variable initializes or changes.
+<span style="font-style:italic">This block can be found in the <span style="font-weight:bold;color:#f87956">Variables Blocks</span> drawer under <span style="font-weight:bold">Core Blocks</span> after a variable has been created.</span><br>
+You can use the <span style="background-color:#f3aa44;font-weight:bold;color:white">when variable initializes or changes</span> block to define how the app behaves when the variable initializes or changes.
 ---
 
 # High Low - Part 2: Real-Time Updates
 ![Setup](./Weeks/Week 2/images/w2_p2_8.png)
-Add the <span style="background-color:#f3aa44;font-weight:bold;color:white">when cloud variable text initializes or changes</span> block to define how the app behaves when the variable changes.
+Add the <span style="background-color:#f3aa44;font-weight:bold;color:white">when variable initializes or changes</span> block. We want changes to be made when the cloud variable <span style="background-color:#f7c9bd;font-weight:bold">text</span> is altered.
 ---
 
 # High Low - Part 2: Real-Time Updates
 ![Setup](./Weeks/Week 2/images/w2_p2_9.png)
-Connect the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Message's Text to</span> block to the <span style="background-color:#f3aa44;font-weight:bold;color:white">when cloud variable text initializes or changes</span> block.
+Connect the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Message's Text to</span> block to the <span style="background-color:#f3aa44;font-weight:bold;color:white">when variable initializes or changes</span> block. We want the “Message” label to change whenever the cloud variable is altered.
 ---
 
 # High Low - Part 2: Real-Time Updates
 ![Setup](./Weeks/Week 2/images/w2_p2_10.png)
-Connect the <span style="background-color:#735ca5;font-weight:bold;color:white">cloud variable text</span> block to the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Message's Text to</span> block so users can communicate.
+Connect the <span style="background-color:#f87956;font-weight:bold;color:white">cloud variable text</span> block to the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Message's Text to</span> block. We want the “Message” label to be populated with the information stored in the cloud variable <span style="background-color:#f7c9bd;font-weight:bold">text</span> so that the users can communicate with one another.
 ---
 
 # High Low - Part 2: Real-Time Updates
 ![Setup](./Weeks/Week 2/images/w2_checkpoint.png)
-[<span style="font-weight:bold">Checkpoint #5: Real-Time Updates</span>]: Preview the app. See if the Message label updates to what a user enters after clicking Submit.
+[<span style="font-weight:bold">Checkpoint #5: Real-Time Updates</span>]: Preview the app. Check the functionality of real-time message display.<br>
+If it works, you now have a fully-functional guessing game that two players can play on separate devices!
 ---
 
 # High Low - Extension #1: Multiple Screens
+[<span style="font-weight:bold">Extension #1: Multiple Screens</span>]
+
 **Extension 1: Multiple Screens**
 
 In this extension, you will create dedicated screens for the Guesser and Clue Giver.
 
 Make a copy of your project from Part 2.
----
 
-# High Low - Extension #1: Multiple Screens
 Have 3 screens total:
 1. A home screen to choose your role
 2. A Guesser screen for making guesses
 3. A Clue Giver screen for providing feedback
----
 
-# High Low - Extension #1: Multiple Screens
 Give the Guesser and Clue Giver the components needed to input text on their respective screens.
----
 
-# High Low - Extension #1: Multiple Screens
 <span style="font-weight:bold">Block:</span> <span style="background-color:#f3aa44;font-weight:bold;color:white">navigate to</span>
 
 ![Block](./Weeks/Week 2/images/w2_ext1_block_navigateTo.png)
 
 <span style="font-style:italic">This block can be found in the <span style="font-weight:bold;color:#f3aa44">Control Blocks</span> drawer under <span style="font-weight:bold">Core Blocks.</span></span><br>
 The <span style="background-color:#f3aa44;font-weight:bold;color:white">navigate to</span> block takes the user to the defined screen.
----
 
-# High Low - Extension #1: Multiple Screens
 Add the blocks for the Guesser and Clue Giver to communicate with each other using cloud variables.
----
 
-# High Low - Extension #1: Multiple Screens
-![Setup](./Weeks/Week 2/images/w2_checkpoint.png)
-[<span style="font-weight:bold">Checkpoint #6: Multiple Screens</span>]: Preview the app. Test that you can navigate between screens and that communication works between the Guesser and Clue Giver screens.
+Preview the app. Test that you can navigate between screens and that communication works between the Guesser and Clue Giver screens.
