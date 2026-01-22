@@ -91,11 +91,13 @@
         background-color: #f8f9fa;
         width: 100%;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         padding: 1rem 0;
         border-bottom: 1px solid #eee;
-        min-height: 300px;
+        min-height: 200px;
+        gap: 1rem;
       }
 
       .image-section img {
@@ -104,7 +106,6 @@
         border-radius: 6px;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         object-fit: contain;
-        display: none;
       }
 
       /* 3. Text Component */
@@ -151,7 +152,7 @@
   </head>
   <body>
     <div class="card">
-      
+
       <div id="loading-msg" class="loading-state">
         Loading...
       </div>
@@ -169,7 +170,6 @@
         </div>
 
         <div class="image-section" id="image-block">
-          <img id="step-image" src="" alt="Step visualization" />
         </div>
 
         <div id="step-text" class="text-section">
@@ -262,10 +262,11 @@
           .map((stepContent) => {
             const lines = stepContent.trim().split("\n");
             let title = "Step";
-            let image = "";
+            let mainImage = "";  // First image goes at top
             let textLines = [];
             let isCheckpoint = false;
             let checkpointName = null;
+            let hasFoundText = false;
 
             lines.forEach((line) => {
               const trimmed = line.trim();
@@ -273,8 +274,17 @@
                 title = trimmed.replace("# ", "");
               } else if (trimmed.match(/!\[.*?\]\(.*?\)/)) {
                 const match = trimmed.match(/\((.*?)\)/);
-                if (match) image = match[1];
+                if (match) {
+                  if (!hasFoundText && !mainImage) {
+                    // First image before any text goes at top
+                    mainImage = match[1];
+                  } else {
+                    // Images after text become inline images
+                    textLines.push(`<img src="${match[1]}" style="max-width:100%;margin:1rem 0;border-radius:6px;box-shadow:0 2px 10px rgba(0,0,0,0.05);" />`);
+                  }
+                }
               } else if (trimmed.length > 0) {
+                hasFoundText = true;
                 // Check for checkpoint marker - capture everything between square brackets
                 const checkpointMatch = trimmed.match(/\[([^\]]*Checkpoint[^\]]*)\]/i);
                 if (checkpointMatch) {
@@ -288,9 +298,9 @@
                 textLines.push(parsed);
               }
             });
-            return { title, image, text: textLines.join("<br>"), isCheckpoint, checkpointName };
+            return { title, mainImage, text: textLines.join("<br>"), isCheckpoint, checkpointName };
           })
-          .filter((s) => s.text || s.image);
+          .filter((s) => s.text || s.mainImage);
       }
 
       // Split steps into sections based on checkpoints
@@ -351,14 +361,18 @@
         document.getElementById("step-title").innerText = current.title;
         document.getElementById("step-text").innerHTML = current.text;
 
-        const imgEl = document.getElementById("step-image");
-        if (current.image) {
-          imgEl.src = current.image;
-          imgEl.style.display = "block";
-          document.getElementById("image-block").style.display = "flex";
+        // Handle main image (at top)
+        const imageBlock = document.getElementById("image-block");
+        imageBlock.innerHTML = "";  // Clear existing images
+
+        if (current.mainImage) {
+          const img = document.createElement("img");
+          img.src = current.mainImage;
+          img.alt = "Step visualization";
+          imageBlock.appendChild(img);
+          imageBlock.style.display = "flex";
         } else {
-          imgEl.style.display = "none";
-          document.getElementById("image-block").style.display = "none";
+          imageBlock.style.display = "none";
         }
 
         document.getElementById("btn-back").disabled = currentStepInSection === 0;
