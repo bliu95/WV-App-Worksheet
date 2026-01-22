@@ -20,9 +20,9 @@ Now, we will move onto blocks.
 # High Low
 <span style="font-weight:bold">Block:</span> <span style="background-color:coral">initialize variable to</span>
 
-![Block](./Weeks/Week 2/images/w2_p1_block_initvar.png)
+![Block](./Weeks/Week 2/images/w2_p1_block_initAppVar.png)
 
-Used to create a variable when the app starts. The dropdown menu can be used to select the variable type or scope.
+Found in the Variables Blocks drawer under Core Blocks. Used to create a variable when the app starts. The dropdown menu can be used to select the variable type or scope.
 ---
 
 # High Low
@@ -33,9 +33,9 @@ Create a variable with the <span style="background-color:coral">initialize varia
 # High Low
 <span style="font-weight:bold">Block:</span> <span style="background-color:#4682b4">specify number</span>
 
-![Block](./Weeks/Week 2/images/w2_p1_block_number.png)
+![Block](./Weeks/Week 2/images/w2_p1_block_specifyNum.png)
 
-Used to specify a number you want to use in your app. You can edit the number in the block.
+Found in the Math Blocks drawer under Core Blocks. Used to specify a number you want to use in your app. You can edit the number in the block.
 ---
 
 # High Low
@@ -46,9 +46,9 @@ Set the variable <span style="font-style: italics">answer</span> to a number of 
 # High Low
 <span style="font-weight:bold">Block:</span> <span style="background-color:#ffce42">when Button Click</span>
 
-![Block](./Weeks/Week 2/images/w2_p1_block_whenclick.png)
+![Block](./Weeks/Week 2/images/w2_p1_block_whenButtonClick.png)
 
-Used to run the blocks within the do part when the button is clicked.
+Found in the Button drawer (named after your button) under UI Components. Used to run the blocks within the do part when the button is clicked.
 ---
 
 # High Low
@@ -61,7 +61,7 @@ Add the <span style="background-color:#ffce42">when Submit Click</span> block to
 
 ![Block](./Weeks/Week 2/images/w2_p1_block_if.png)
 
-Checks a statement and runs the block inside do if the statement is true.
+Found in the Control Blocks drawer under Core Blocks. Checks a statement and runs the block inside do if the statement is true.
 ---
 
 # High Low
@@ -74,7 +74,7 @@ Connect the <span style="background-color:#ffce42">if</span> block to the <span 
 
 ![Block](./Weeks/Week 2/images/w2_p1_block_comparison.png)
 
-Compares two values and returns True or False based on whether the condition is met.
+Found in the Logic Blocks drawer under Core Blocks. Compares two values and returns True or False based on whether the condition is met.
 ---
 
 # High Low
@@ -135,6 +135,14 @@ Connect the <span style="background-color:#3cb371">set Result's Text to</span> b
 ---
 
 # High Low
+<span style="font-weight:bold">Block:</span> <span style="background-color:#4682b4">random integer from 1 to 100</span>
+
+![Block](./Weeks/Week 2/images/w2_p1_block_randInt.png)
+
+Found in the Math Blocks drawer under Core Blocks. Returns a random integer within a specified range, inclusive of the provided integers.
+---
+
+# High Low
 ![Setup](./Weeks/Week 2/images/w2_p1_19.png)
 Replace the <span style="background-color:#4682b4">specify number</span> block with the <span style="background-color:#4682b4">random integer from 1 to 100</span> block for a randomized answer.
 ---
@@ -168,9 +176,9 @@ Now, we will move onto blocks using cloud variables.
 # High Low - Part 2
 <span style="font-weight:bold">Block:</span> <span style="background-color:#9370db">cloud variable</span>
 
-![Block](./Weeks/Week 2/images/w2_p2_block_cloud.png)
+![Block](./Weeks/Week 2/images/w2_p2_block_initCloudVar.png)
 
-Allows you to store data in the cloud. This data can be accessed from multiple devices.
+Found in the Variables Blocks drawer under Core Blocks. Allows you to store data in the cloud. This data can be accessed from multiple devices.
 ---
 
 # High Low - Part 2
@@ -186,6 +194,14 @@ Add the <span style="background-color:#ffce42">when Submit Click</span> block fo
 ---
 
 # High Low - Part 2
+<span style="font-weight:bold">Block:</span> <span style="background-color:#9370db">set variable to</span>
+
+![Block](./Weeks/Week 2/images/w2_p2_block_setVarTo.png)
+
+Found in the Variables Blocks drawer under Core Blocks. Allows you to set a variable within a block event.
+---
+
+# High Low - Part 2
 ![Setup](./Weeks/Week 2/images/w2_p2_6.png)
 Connect the <span style="background-color:#9370db">set cloud variable to</span> block to the <span style="background-color:#ffce42">when Submit Click</span> block to update the cloud variable <span style="font-style: italics">text</span>.
 ---
@@ -198,9 +214,9 @@ Connect the <span style="background-color:#90ee90">Text_Input's Text</span> bloc
 # High Low - Part 2
 <span style="font-weight:bold">Block:</span> <span style="background-color:#ffce42">when variable initializes or changes</span>
 
-![Block](./Weeks/Week 2/images/w2_p2_block_whenchanges.png)
+![Block](./Weeks/Week 2/images/w2_p2_block_whenVarChange.png)
 
-Used to define how the app behaves when the variable initializes or changes.
+Found in the Variables Blocks drawer under Core Blocks after creating a variable. Used to define how the app behaves when the variable initializes or changes.
 ---
 
 # High Low - Part 2
@@ -245,9 +261,9 @@ Give the Guesser and Clue Giver the components needed to input text on their res
 # High Low - Extension 1
 <span style="font-weight:bold">Block:</span> <span style="background-color:#ffce42">navigate to</span>
 
-![Block](./Weeks/Week 2/images/w2_ext1_block_navigate.png)
+![Block](./Weeks/Week 2/images/w2_ext1_block_navigateTo.png)
 
-Takes the user to the defined screen.
+Found in the Control Blocks drawer under Core Blocks. Takes the user to the defined screen.
 ---
 
 # High Low - Extension 1

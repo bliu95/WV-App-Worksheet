@@ -117,6 +117,33 @@
         min-height: 100px;
       }
 
+      /* Block Introduction Section */
+      .block-intro {
+        margin-top: 1.5rem;
+        padding: 1rem;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        border-left: 4px solid #1a73e8;
+      }
+
+      .block-intro-header {
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        color: #202124;
+      }
+
+      .block-intro img {
+        max-width: 100%;
+        max-height: 150px;
+        margin: 0.5rem 0;
+        border-radius: 4px;
+      }
+
+      .block-intro-description {
+        color: #5f6368;
+        font-size: 0.95rem;
+      }
+
       /* 4. Controls (Next/Back) */
       .controls {
         display: flex;
@@ -258,7 +285,8 @@
       function parseMarkdown(md) {
         const rawSteps = md.split(/^---$/m);
 
-        return rawSteps
+        // First pass: parse all steps
+        const parsedSteps = rawSteps
           .map((stepContent) => {
             const lines = stepContent.trim().split("\n");
             let title = "Step";
@@ -266,6 +294,10 @@
             let textLines = [];
             let isCheckpoint = false;
             let checkpointName = null;
+            let isBlockIntro = false;
+            let blockName = "";
+            let blockImage = "";
+            let blockDescription = "";
 
             lines.forEach((line) => {
               const trimmed = line.trim();
@@ -275,12 +307,17 @@
                 const match = trimmed.match(/\((.*?)\)/);
                 if (match) image = match[1];
               } else if (trimmed.length > 0) {
-                // Check for checkpoint marker - capture everything between square brackets
+                // Check for checkpoint marker
                 const checkpointMatch = trimmed.match(/\[([^\]]*Checkpoint[^\]]*)\]/i);
                 if (checkpointMatch) {
                   isCheckpoint = true;
-                  // Strip HTML tags and use the full content as the name
                   checkpointName = checkpointMatch[1].replace(/<[^>]*>/g, '').trim();
+                }
+                // Check for block introduction marker
+                const blockMatch = trimmed.match(/font-weight:bold[^>]*>Block:<\/span>\s*(.+)/i);
+                if (blockMatch) {
+                  isBlockIntro = true;
+                  blockName = blockMatch[1].replace(/<[^>]*>/g, '').trim();
                 }
                 let parsed = trimmed
                   .replace(/\*\*(.*?)\*\*/g, "<b>$1</b>")
@@ -288,9 +325,56 @@
                 textLines.push(parsed);
               }
             });
-            return { title, image, text: textLines.join("<br>"), isCheckpoint, checkpointName };
+
+            // For block intros, extract the block image and description
+            if (isBlockIntro) {
+              blockImage = image;
+              // The description is all text after the block name line
+              const textContent = textLines.join("<br>");
+              const descMatch = textContent.split("<br>").slice(1).join("<br>").trim();
+              blockDescription = descMatch;
+            }
+
+            return {
+              title,
+              image,
+              text: textLines.join("<br>"),
+              isCheckpoint,
+              checkpointName,
+              isBlockIntro,
+              blockName,
+              blockImage,
+              blockDescription
+            };
           })
           .filter((s) => s.text || s.image);
+
+        // Second pass: merge block intros with the following step
+        const mergedSteps = [];
+        let pendingBlockIntro = null;
+
+        for (let i = 0; i < parsedSteps.length; i++) {
+          const step = parsedSteps[i];
+
+          if (step.isBlockIntro) {
+            // Store this block intro to merge with the next step
+            pendingBlockIntro = step;
+          } else {
+            // This is a regular step
+            if (pendingBlockIntro) {
+              // Merge the pending block intro into this step
+              step.blockIntro = {
+                name: pendingBlockIntro.blockName,
+                image: pendingBlockIntro.blockImage,
+                description: pendingBlockIntro.blockDescription
+              };
+              pendingBlockIntro = null;
+            }
+            mergedSteps.push(step);
+          }
+        }
+
+        return mergedSteps;
       }
 
       // Split steps into sections based on checkpoints
@@ -349,7 +433,19 @@
 
         document.getElementById("step-badge").innerText = `Step ${currentStepInSection + 1} of ${sectionSteps.length}`;
         document.getElementById("step-title").innerText = current.title;
-        document.getElementById("step-text").innerHTML = current.text;
+
+        // Build the text content, including block intro if present
+        let textContent = current.text;
+        if (current.blockIntro) {
+          textContent += `
+            <div class="block-intro">
+              <div class="block-intro-header">Block: ${current.blockIntro.name}</div>
+              ${current.blockIntro.image ? `<img src="${current.blockIntro.image}" alt="Block: ${current.blockIntro.name}">` : ''}
+              <div class="block-intro-description">${current.blockIntro.description}</div>
+            </div>
+          `;
+        }
+        document.getElementById("step-text").innerHTML = textContent;
 
         const imgEl = document.getElementById("step-image");
         if (current.image) {
