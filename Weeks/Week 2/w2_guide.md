@@ -1,4 +1,8 @@
 # High Low - Part 1: Random Number Guesser
+You will design an app where the user will guess a number from 1 to 100. If the guess is too low or too high, let the user know accordingly. This keeps going until the user is able to guess the number from the information from prior guesses.
+---
+
+# High Low - Part 1: Random Number Guesser
 ![Setup](./Weeks/Week 2/images/w2_p1_1.png)
 Add a text input for users to type in a guess. We will rename it to "Text_Input".
 ---
@@ -101,7 +105,8 @@ Connect the <span style="background-color:#3f9e83;font-weight:bold;color:white">
 
 # High Low - Part 1: Random Number Guesser
 ![Setup](./Weeks/Week 2/images/w2_checkpoint.png)
-[<span style="font-weight:bold">Checkpoint #1: Correct Answer Check</span>]: Preview the app. See if the Result label indicates whether the guess is correct.<br>
+<span style="font-weight:bold">[Checkpoint #1: Correct Answer Check]</span><br>
+Preview the app. See if the Result label indicates whether the guess is correct.<br>
 If it works, the “Result” label will indicate whether the guess is correct, but there is no indication whether the guess is incorrect. When the guess is incorrect, we want the “Result” label to indicate whether the guess is too high or too low.
 ---
 
@@ -121,7 +126,8 @@ We want the "Result" label to indicate that the guess is too low when it is lowe
 
 # High Low - Part 1: Random Number Guesser
 ![Setup](./Weeks/Week 2/images/w2_checkpoint.png)
-[<span style="font-weight:bold">Checkpoint #2: Too Low Logic</span>]: Preview the app. See if the "Result" label indicates whether the guess is too low.<br>
+<span style="font-weight:bold">[Checkpoint #2: Too Low Logic]</span><br>
+Preview the app. See if the "Result" label indicates whether the guess is too low.<br>
 If it works, now the “Result” label will indicate whether the guess is correct or too low, but there is no indication whether the guess is too high. When the guess is too high, we want the “Result” label to indicate that the guess is too high.
 ---
 
@@ -146,7 +152,8 @@ Connect the <span style="background-color:#3f9e83;font-weight:bold;color:white">
 
 # High Low - Part 1: Random Number Guesser
 ![Setup](./Weeks/Week 2/images/w2_checkpoint.png)
-[<span style="font-weight:bold">Checkpoint #3: Too High Logic</span>]: Preview the app. See if the "Result" label indicates whether the guess is too high.<br>
+<span style="font-weight:bold">[Checkpoint #3: Too High Logic]</span><br>
+Preview the app. See if the "Result" label indicates whether the guess is too high.<br>
 If it works, now the “Result” label will indicate whether the guess is correct, too low, or too high, but there is only one possible answer which was pre-set to 50 in Step 5. The number should be randomly chosen so the user won’t know what the answer is every time.
 ---
 
@@ -166,14 +173,18 @@ Replace the <span style="background-color:#6789cc;font-weight:bold;color:white">
 
 # High Low - Part 1: Random Number Guesser
 ![Setup](./Weeks/Week 2/images/w2_checkpoint.png)
-[<span style="font-weight:bold">Checkpoint #4: Random Number</span>]: Preview the app. See if the number is different each time.<br>
+<span style="font-weight:bold">[Checkpoint #4: Random Number]</span><br>
+Preview the app. See if the number is different each time.<br>
 If it works, you now have a fully-functional random number guesser!
 ---
 
 # High Low - Part 2: Real-Time Updates
-![Setup](./Weeks/Week 2/images/w2_p2_1.png)
-In Part 2, we will create a real-time communication system. Two users will communicate: a Guesser makes guesses while a Clue Giver provides feedback.
+Instead of using a random number generator to determine an answer, let's make another app where there will be two users: a **Guesser** and a **Clue Giver**. The **Guesser** will make a guess, and the **Clue Giver** will tell the **Guesser** whether they are getting closer or further away after seeing the guess.<br>
+The **Clue Giver** and **Guesser** will be using the same app to communicate with each other. Instead of guessing a number, the **Clue Giver** can decide on a different method or topic.
+---
 
+# High Low - Part 2: Real-Time Updates
+![Setup](./Weeks/Week 2/images/w2_p2_1.png)
 In a new project, add a text input for the two users to type in their message. We will rename it to "Text_Input".
 ---
 
@@ -252,33 +263,18 @@ Connect the <span style="background-color:#f87956;font-weight:bold;color:white">
 
 # High Low - Part 2: Real-Time Updates
 ![Setup](./Weeks/Week 2/images/w2_checkpoint.png)
-[<span style="font-weight:bold">Checkpoint #5: Real-Time Updates</span>]: Preview the app. Check the functionality of real-time message display.<br>
+<span style="font-weight:bold">[Checkpoint #5: Real-Time Updates]</span><br>
+Preview the app. Check the functionality of real-time message display.<br>
 If it works, you now have a fully-functional guessing game that two players can play on separate devices!
 ---
 
 # High Low - Extension #1: Multiple Screens
-[<span style="font-weight:bold">Extension #1: Multiple Screens</span>]
+<span style="font-weight:bold">[Extension #1: Multiple Screens]</span><br>
+Now, instead of both the **Guesser** and **Clue Giver** using the same screen, let's have each of them have their own dedicated screen.<br>
+Starting with:
+1. Make a copy of your project from Part 2.
+2. Have 3 screens total: a home screen to choose your role, a **Guesser** screen for making guesses, and a **Clue Giver** screen for providing feedback.
+3. Give the **Guesser** and **Clue Giver** the components needed to input text on their respective screens.
+4. Add the blocks for them to communicate with each other.
 
-**Extension 1: Multiple Screens**
-
-In this extension, you will create dedicated screens for the Guesser and Clue Giver.
-
-Make a copy of your project from Part 2.
-
-Have 3 screens total:
-1. A home screen to choose your role
-2. A Guesser screen for making guesses
-3. A Clue Giver screen for providing feedback
-
-Give the Guesser and Clue Giver the components needed to input text on their respective screens.
-
-<span style="font-weight:bold">Block:</span> <span style="background-color:#f3aa44;font-weight:bold;color:white">navigate to</span>
-
-![Block](./Weeks/Week 2/images/w2_ext1_block_navigateTo.png)
-
-<span style="font-style:italic">This block can be found in the <span style="font-weight:bold;color:#f3aa44">Control Blocks</span> drawer under <span style="font-weight:bold">Core Blocks.</span></span><br>
-The <span style="background-color:#f3aa44;font-weight:bold;color:white">navigate to</span> block takes the user to the defined screen.
-
-Add the blocks for the Guesser and Clue Giver to communicate with each other using cloud variables.
-
-Preview the app. Test that you can navigate between screens and that communication works between the Guesser and Clue Giver screens.
+<div class="block-intro"><div class="block-intro-header">Block: <span style="background-color:#f3aa44;font-weight:bold;color:white">navigate to</span></div><img src="./Weeks/Week 2/images/w2_ext1_block_navigateTo.png" alt="Block: navigate to"><div class="block-intro-description"><span style="font-style:italic">This block can be found in the <span style="font-weight:bold;color:#f3aa44">Control Blocks</span> drawer under <span style="font-weight:bold">Core Blocks.</span></span><br>The <span style="background-color:#f3aa44;font-weight:bold;color:white">navigate to</span> block takes the user to the defined screen.</div></div>
