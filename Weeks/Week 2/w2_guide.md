@@ -60,7 +60,7 @@ Change the default text that comes with the <span style="background-color:#3cb37
 ---
 
 # High Low
-[<span style="font-weight:bold">Checkpoint #1</span>]: Preview your app Preview the app. Type in the answer. See if it indicates whether the answer is correct.
+[<span style="font-weight:bold">Checkpoint #1: Setup & Correct Answer</span>]: Preview your app Preview the app. Type in the answer. See if it indicates whether the answer is correct.
 ---
 
 # High Low
@@ -95,7 +95,7 @@ This is what your blocks should look like now.
 ---
 
 # High Low
-[<span style="font-weight:bold">Checkpoint #2</span>]: Preview your app Preview the app. Type in a guess that is lower than the answer. Check to see if the label shows "Too low".
+[<span style="font-weight:bold">Checkpoint #2: Too Low Logic</span>]: Preview your app Preview the app. Type in a guess that is lower than the answer. Check to see if the label shows "Too low".
 ---
 
 # High Low
@@ -111,7 +111,7 @@ Change the default text that comes with the <span style="background-color:#3cb37
 ---
 
 # High Low
-[<span style="font-weight:bold">Checkpoint #3</span>]: Preview your app Preview the app. Type in a guess that is higher than the answer. Check to see if the label shows "Too high".
+[<span style="font-weight:bold">Checkpoint #3: Too High Logic</span>]: Preview your app Preview the app. Type in a guess that is higher than the answer. Check to see if the label shows "Too high".
 ---
 
 # High Low
@@ -120,4 +120,4 @@ Lastly, replace the number that connect with your variable that holds the correc
 ---
 
 # High Low
-[<span style="font-weight:bold">Checkpoint #4</span>]: Preview the app. See if the number is different each time when you preview the app.
+[<span style="font-weight:bold">Checkpoint #4: Random Number</span>]: Preview the app. See if the number is different each time when you preview the app.
