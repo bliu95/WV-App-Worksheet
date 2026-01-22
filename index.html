@@ -296,6 +296,7 @@
             let checkpointName = null;
             let isBlockIntro = false;
             let blockName = "";
+            let blockNameStyled = "";
             let blockImage = "";
             let blockDescription = "";
 
@@ -314,10 +315,11 @@
                   checkpointName = checkpointMatch[1].replace(/<[^>]*>/g, '').trim();
                 }
                 // Check for block introduction marker
-                const blockMatch = trimmed.match(/font-weight:bold[^>]*>Block:<\/span>\s*(.+)/i);
+                const blockMatch = trimmed.match(/font-weight:bold[^>]*>Block:<\/span>\s*(<span[^>]*>([^<]*)<\/span>)/i);
                 if (blockMatch) {
                   isBlockIntro = true;
-                  blockName = blockMatch[1].replace(/<[^>]*>/g, '').trim();
+                  blockNameStyled = blockMatch[1].trim();  // Preserve styled HTML span
+                  blockName = blockMatch[2].trim();  // Plain text name for alt attribute
                 }
                 let parsed = trimmed
                   .replace(/\*\*(.*?)\*\*/g, "<b>$1</b>")
@@ -343,6 +345,7 @@
               checkpointName,
               isBlockIntro,
               blockName,
+              blockNameStyled,
               blockImage,
               blockDescription
             };
@@ -365,6 +368,7 @@
               // Merge the pending block intro into this step
               step.blockIntro = {
                 name: pendingBlockIntro.blockName,
+                nameStyled: pendingBlockIntro.blockNameStyled,
                 image: pendingBlockIntro.blockImage,
                 description: pendingBlockIntro.blockDescription
               };
@@ -439,7 +443,7 @@
         if (current.blockIntro) {
           textContent += `
             <div class="block-intro">
-              <div class="block-intro-header">Block: ${current.blockIntro.name}</div>
+              <div class="block-intro-header">Block: ${current.blockIntro.nameStyled}</div>
               ${current.blockIntro.image ? `<img src="${current.blockIntro.image}" alt="Block: ${current.blockIntro.name}">` : ''}
               <div class="block-intro-description">${current.blockIntro.description}</div>
             </div>
