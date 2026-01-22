@@ -91,13 +91,11 @@
         background-color: #f8f9fa;
         width: 100%;
         display: flex;
-        flex-direction: column;
         justify-content: center;
         align-items: center;
         padding: 1rem 0;
         border-bottom: 1px solid #eee;
-        min-height: 200px;
-        gap: 1rem;
+        min-height: 300px;
       }
 
       .image-section img {
@@ -106,6 +104,7 @@
         border-radius: 6px;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         object-fit: contain;
+        display: none;
       }
 
       /* 3. Text Component */
@@ -175,55 +174,11 @@
         border: 1px solid #ccc;
         font-size: 0.9rem;
       }
-
-      /* Block Introduction Section */
-      .block-intro {
-        margin-top: 1.25rem;
-        padding-top: 1rem;
-        border-top: 1px solid #eee;
-      }
-
-      .block-intro-header {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        margin-bottom: 0.5rem;
-      }
-
-      .block-intro-label {
-        background-color: #e3f2fd;
-        color: #0d47a1;
-        font-size: 0.7rem;
-        font-weight: 600;
-        padding: 3px 8px;
-        border-radius: 4px;
-      }
-
-      .block-intro-name {
-        font-weight: 500;
-        color: #3c4043;
-        font-size: 0.95rem;
-      }
-
-      .block-intro img {
-        max-width: 100%;
-        max-height: 60px;
-        border-radius: 4px;
-        margin: 0.5rem 0;
-        display: block;
-      }
-
-      .block-intro-description {
-        color: #5f6368;
-        font-size: 0.9rem;
-        line-height: 1.5;
-        margin: 0;
-      }
     </style>
   </head>
   <body>
     <div class="card">
-
+      
       <div id="loading-msg" class="loading-state">
         Loading...
       </div>
@@ -241,6 +196,7 @@
         </div>
 
         <div class="image-section" id="image-block">
+          <img id="step-image" src="" alt="Step visualization" />
         </div>
 
         <div id="step-text" class="text-section">
@@ -334,7 +290,7 @@
           .map((stepContent) => {
             const lines = stepContent.trim().split("\n");
             let title = "Step";
-            let mainImage = "";  // First image goes at top
+            let image = "";
             let textLines = [];
             let isCheckpoint = false;
             let checkpointName = null;
@@ -347,38 +303,9 @@
               const trimmed = line.trim();
               if (trimmed.startsWith("# ")) {
                 title = trimmed.replace("# ", "");
-              } else if (trimmed.match(/Block:<\/span>/i) || trimmed.match(/\*\*Block:\*\*/i)) {
-                // Start of block introduction section
-                inBlockIntro = true;
-                hasFoundText = true;
-                // Extract block name from the line
-                const nameMatch = trimmed.match(/Block:<\/span>\s*(.*)/i) || trimmed.match(/\*\*Block:\*\*\s*(.*)/i);
-                if (nameMatch) {
-                  blockIntroName = nameMatch[1];
-                }
-              } else if (inBlockIntro && trimmed.match(/!\[.*?\]\(.*?\)/)) {
-                // Block intro image
-                const match = trimmed.match(/\((.*?)\)/);
-                if (match) {
-                  blockIntroImage = match[1];
-                }
-              } else if (inBlockIntro && trimmed.length > 0) {
-                // Block intro description
-                let parsed = trimmed
-                  .replace(/\*\*(.*?)\*\*/g, "<b>$1</b>")
-                  .replace(/`(.*?)`/g, '<code style="background:#eee;padding:2px 5px;border-radius:4px">$1</code>');
-                blockIntroDesc.push(parsed);
               } else if (trimmed.match(/!\[.*?\]\(.*?\)/)) {
                 const match = trimmed.match(/\((.*?)\)/);
-                if (match) {
-                  if (!hasFoundText && !mainImage) {
-                    // First image before any text goes at top
-                    mainImage = match[1];
-                  } else {
-                    // Images after text become inline images
-                    textLines.push(`<img src="${match[1]}" style="max-width:100%;margin:1rem 0;border-radius:6px;box-shadow:0 2px 10px rgba(0,0,0,0.05);" />`);
-                  }
-                }
+                if (match) image = match[1];
               } else if (trimmed.length > 0) {
                 // Check for checkpoint marker
                 const checkpointMatch = trimmed.match(/\[([^\]]*Checkpoint[^\]]*)\]/i);
@@ -520,18 +447,14 @@
         }
         document.getElementById("step-text").innerHTML = textContent;
 
-        // Handle main image (at top)
-        const imageBlock = document.getElementById("image-block");
-        imageBlock.innerHTML = "";  // Clear existing images
-
-        if (current.mainImage) {
-          const img = document.createElement("img");
-          img.src = current.mainImage;
-          img.alt = "Step visualization";
-          imageBlock.appendChild(img);
-          imageBlock.style.display = "flex";
+        const imgEl = document.getElementById("step-image");
+        if (current.image) {
+          imgEl.src = current.image;
+          imgEl.style.display = "block";
+          document.getElementById("image-block").style.display = "flex";
         } else {
-          imageBlock.style.display = "none";
+          imgEl.style.display = "none";
+          document.getElementById("image-block").style.display = "none";
         }
 
         document.getElementById("btn-back").disabled = currentStepInSection === 0;
