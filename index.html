@@ -271,7 +271,6 @@
             let image = "";
             let textLines = [];
             let isCheckpoint = false;
-            let checkpointNumber = null;
             let checkpointName = null;
 
             lines.forEach((line) => {
@@ -282,12 +281,12 @@
                 const match = trimmed.match(/\((.*?)\)/);
                 if (match) image = match[1];
               } else if (trimmed.length > 0) {
-                // Check for checkpoint marker (format: [Checkpoint #N: Section Name])
-                const checkpointMatch = trimmed.match(/\[.*?Checkpoint #(\d+):?\s*([^\]]*?).*?\]/i);
+                // Check for checkpoint marker - capture everything between square brackets
+                const checkpointMatch = trimmed.match(/\[([^\]]*Checkpoint[^\]]*)\]/i);
                 if (checkpointMatch) {
                   isCheckpoint = true;
-                  checkpointNumber = parseInt(checkpointMatch[1], 10);
-                  checkpointName = checkpointMatch[2] ? checkpointMatch[2].replace(/<[^>]*>/g, '').trim() : null;
+                  // Strip HTML tags and use the full content as the name
+                  checkpointName = checkpointMatch[1].replace(/<[^>]*>/g, '').trim();
                 }
                 let parsed = trimmed
                   .replace(/\*\*(.*?)\*\*/g, "<b>$1</b>")
@@ -295,7 +294,7 @@
                 textLines.push(parsed);
               }
             });
-            return { title, image, text: textLines.join("<br>"), isCheckpoint, checkpointNumber, checkpointName };
+            return { title, image, text: textLines.join("<br>"), isCheckpoint, checkpointName };
           })
           .filter((s) => s.text || s.image);
       }
@@ -307,9 +306,8 @@
 
         steps.forEach((step, index) => {
           if (step.isCheckpoint) {
-            const sectionName = step.checkpointName || `Checkpoint #${step.checkpointNumber}`;
             result.push({
-              name: sectionName,
+              name: step.checkpointName || `Checkpoint ${result.length + 1}`,
               startIndex: sectionStart,
               endIndex: index
             });
