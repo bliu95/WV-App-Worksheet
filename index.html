@@ -369,9 +369,15 @@
         document.getElementById("btn-back").disabled = currentStepInSection === 0;
 
         const nextBtn = document.getElementById("btn-next");
-        if (currentStepInSection === sectionSteps.length - 1) {
+        const isLastStepInSection = currentStepInSection === sectionSteps.length - 1;
+        const isLastSection = currentSection === sections.length - 1;
+
+        if (isLastStepInSection && isLastSection) {
           nextBtn.innerText = "Finish";
           nextBtn.disabled = true;
+        } else if (isLastStepInSection) {
+          nextBtn.innerText = "Next Section";
+          nextBtn.disabled = false;
         } else {
           nextBtn.innerText = "Next";
           nextBtn.disabled = false;
@@ -381,8 +387,15 @@
       function changeStep(direction) {
         const sectionSteps = getCurrentSectionSteps();
         const nextIndex = currentStepInSection + direction;
+
         if (nextIndex >= 0 && nextIndex < sectionSteps.length) {
           currentStepInSection = nextIndex;
+          renderStep();
+        } else if (direction === 1 && nextIndex >= sectionSteps.length && currentSection < sections.length - 1) {
+          // Move to next section
+          currentSection++;
+          currentStepInSection = 0;
+          document.getElementById('section-select').value = currentSection;
           renderStep();
         }
       }
