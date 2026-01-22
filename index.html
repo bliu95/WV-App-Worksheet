@@ -148,6 +148,50 @@
         border: 1px solid #ccc;
         font-size: 0.9rem;
       }
+
+      /* Block Introduction Section */
+      .block-intro {
+        margin-top: 1.25rem;
+        padding-top: 1rem;
+        border-top: 1px solid #eee;
+      }
+
+      .block-intro-header {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .block-intro-label {
+        background-color: #e3f2fd;
+        color: #0d47a1;
+        font-size: 0.7rem;
+        font-weight: 600;
+        padding: 3px 8px;
+        border-radius: 4px;
+      }
+
+      .block-intro-name {
+        font-weight: 500;
+        color: #3c4043;
+        font-size: 0.95rem;
+      }
+
+      .block-intro img {
+        max-width: 100%;
+        max-height: 60px;
+        border-radius: 4px;
+        margin: 0.5rem 0;
+        display: block;
+      }
+
+      .block-intro-description {
+        color: #5f6368;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        margin: 0;
+      }
     </style>
   </head>
   <body>
@@ -267,11 +311,36 @@
             let isCheckpoint = false;
             let checkpointName = null;
             let hasFoundText = false;
+            let inBlockIntro = false;
+            let blockIntroName = "";
+            let blockIntroImage = "";
+            let blockIntroDesc = [];
 
             lines.forEach((line) => {
               const trimmed = line.trim();
               if (trimmed.startsWith("# ")) {
                 title = trimmed.replace("# ", "");
+              } else if (trimmed.match(/Block:<\/span>/i) || trimmed.match(/\*\*Block:\*\*/i)) {
+                // Start of block introduction section
+                inBlockIntro = true;
+                hasFoundText = true;
+                // Extract block name from the line
+                const nameMatch = trimmed.match(/Block:<\/span>\s*(.*)/i) || trimmed.match(/\*\*Block:\*\*\s*(.*)/i);
+                if (nameMatch) {
+                  blockIntroName = nameMatch[1];
+                }
+              } else if (inBlockIntro && trimmed.match(/!\[.*?\]\(.*?\)/)) {
+                // Block intro image
+                const match = trimmed.match(/\((.*?)\)/);
+                if (match) {
+                  blockIntroImage = match[1];
+                }
+              } else if (inBlockIntro && trimmed.length > 0) {
+                // Block intro description
+                let parsed = trimmed
+                  .replace(/\*\*(.*?)\*\*/g, "<b>$1</b>")
+                  .replace(/`(.*?)`/g, '<code style="background:#eee;padding:2px 5px;border-radius:4px">$1</code>');
+                blockIntroDesc.push(parsed);
               } else if (trimmed.match(/!\[.*?\]\(.*?\)/)) {
                 const match = trimmed.match(/\((.*?)\)/);
                 if (match) {
@@ -298,6 +367,22 @@
                 textLines.push(parsed);
               }
             });
+
+            // If we found a block intro, add it to the text
+            if (inBlockIntro && blockIntroName) {
+              const blockHtml = `
+                <div class="block-intro">
+                  <div class="block-intro-header">
+                    <span class="block-intro-label">Block</span>
+                    <span class="block-intro-name">${blockIntroName}</span>
+                  </div>
+                  ${blockIntroImage ? `<img src="${blockIntroImage}" alt="Block visualization" />` : ''}
+                  <p class="block-intro-description">${blockIntroDesc.join(' ')}</p>
+                </div>
+              `;
+              textLines.push(blockHtml);
+            }
+
             return { title, mainImage, text: textLines.join("<br>"), isCheckpoint, checkpointName };
           })
           .filter((s) => s.text || s.mainImage);
