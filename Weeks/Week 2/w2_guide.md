@@ -106,7 +106,7 @@ Connect the <span style="background-color:#3f9e83;font-weight:bold;color:white">
 # High Low - Part 1: Random Number Guesser
 ![Setup](./Weeks/Week 2/images/w2_checkpoint.png)
 <span style="font-weight:bold">[Checkpoint #1: Correct Answer Check]</span><br>
-Preview the app. See if the Result label indicates whether the guess is correct.<br>
+Preview the app. See if the "Result" label indicates whether the guess is correct.<br>
 If it works, the “Result” label will indicate whether the guess is correct, but there is no indication whether the guess is incorrect. When the guess is incorrect, we want the “Result” label to indicate whether the guess is too high or too low.
 ---
 
@@ -277,4 +277,5 @@ Starting with:
 3. Give the **Guesser** and **Clue Giver** the components needed to input text on their respective screens.
 4. Add the blocks for them to communicate with each other.
 
-<div class="block-intro"><div class="block-intro-header">Block: <span style="background-color:#f3aa44;font-weight:bold;color:white">navigate to</span></div><img src="./Weeks/Week 2/images/w2_ext1_block_navigateTo.png" alt="Block: navigate to"><div class="block-intro-description"><span style="font-style:italic">This block can be found in the <span style="font-weight:bold;color:#f3aa44">Control Blocks</span> drawer under <span style="font-weight:bold">Core Blocks.</span></span><br>The <span style="background-color:#f3aa44;font-weight:bold;color:white">navigate to</span> block takes the user to the defined screen.</div></div>
+<div class="block-intro"><div class="block-intro-header">Block: <span style="background-color:#f3aa44;font-weight:bold;color:white">navigate to</span></div><img src="./Weeks/Week 2/images/w2_ext1_block_navigateTo.png" alt="Block: navigate to"><div class="block-intro-description"><span style="font-style:italic">This block can be found in the <span style="font-weight:bold;color:#f3aa44">Control Blocks</span> drawer under <span style="font-weight:bold">Core Blocks.</span></span><br>
+The <span style="background-color:#f3aa44;font-weight:bold;color:white">navigate to</span> block takes the user to the defined screen.</div></div>
