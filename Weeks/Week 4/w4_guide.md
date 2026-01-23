@@ -199,7 +199,7 @@ If it works, you now have a fully-functional quiz app!
 ---
 
 # Simple Quiz - Extension #1: Ignoring Answer Capitalization
-<span style="font-weight:bold">[Extension #1: Ignoring answer capitalization]</span><br>
+<span style="font-weight:bold">[Extension #1: Ignoring Answer Capitalization]</span><br>
 If the user types in an answer, but it's not capitalized exactly as the correct answer in the data source, it will be marked as incorrect. Change the blocks so that the answer can be correct, regardless of the capitalization.
 
 <div class="block-intro"><div class="block-intro-header">Block: <span style="background-color:#df6078;font-weight:bold;color:white">set case</span></div><img src="./Weeks/Week 4/images/w4_ext1_setCase.png" alt="Block: set case"><div class="block-intro-description"><span style="font-style:italic">This block can be found in the <span style="font-weight:bold;color:#df6078">Text Blocks</span> drawer under <span style="font-weight:bold">Core Blocks.</span></span><br>
@@ -207,12 +207,12 @@ The <span style="background-color:#df6078;font-weight:bold;color:white">set case
 ---
 
 # Simple Quiz - Extension #2: Track Number of Correct Answers
-<span style="font-weight:bold">[Extension #2: Track number of correct answers]</span><br>
+<span style="font-weight:bold">[Extension #2: Track Number of Correct Answers]</span><br>
 Use another variable to track how many questions the user has answered correctly, and display the score on the screen.
 ---
 
 # Simple Quiz - Extension #3: Questions in Random Order
-<span style="font-weight:bold">[Extension #3: Questions in random order]</span><br>
+<span style="font-weight:bold">[Extension #3: Questions in Random Order]</span><br>
 Have the questions in the quiz appear in a random order.
 
 <div class="block-intro"><div class="block-intro-header">Block: <span style="background-color:#75afc8;font-weight:bold;color:white">shuffle list</span></div><img src="./Weeks/Week 4/images/w4_ext3_block_shuffleList.png" alt="Block: shuffle list"><div class="block-intro-description"><span style="font-style:italic">This block can be found in the <span style="font-weight:bold;color:#75afc8">Lists Blocks</span> drawer under <span style="font-weight:bold">Core Blocks.</span></span><br>
