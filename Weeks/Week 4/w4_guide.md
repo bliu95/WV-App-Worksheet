@@ -137,7 +137,10 @@ Connect the <span style="background-color:#f87956;font-weight:bold;color:white">
 
 # Quiz App - Simple Quiz
 ![Setup](./Weeks/Week 4/images/w4_23.png)
-Connect the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Question's Text to</span> block to the <span style="background-color:#f3aa44;font-weight:bold;color:white">do</span> part of the <span style="background-color:#f3aa44;font-weight:bold;color:white">when Submit Click</span> block. Connect the <span style="background-color:#735ca5;font-weight:bold;color:white">get value from</span> block to the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Question's Text to</span> block. Make sure the column whose value is being retrieved is <span style="background-color:#c7bedc;font-weight:bold">Questions</span>. Connect the <span style="background-color:#f87956;font-weight:bold;color:white">app variable questionNumber</span> block to the <span style="background-color:#735ca5;font-weight:bold;color:white">get value from</span> block. We want the "Question" label to update to the next question after one question has been answered.
+1. Connect the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Question's Text to</span> block to the <span style="background-color:#f3aa44;font-weight:bold;color:white">do</span> part of the <span style="background-color:#f3aa44;font-weight:bold;color:white">when Submit Click</span> block.
+2. Connect the <span style="background-color:#735ca5;font-weight:bold;color:white">get value from</span> block to the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Question's Text to</span> block. Make sure the column whose value is being retrieved is <span style="background-color:#c7bedc;font-weight:bold">Questions</span>.
+3. Connect the <span style="background-color:#f87956;font-weight:bold;color:white">app variable questionNumber</span> block to the <span style="background-color:#735ca5;font-weight:bold;color:white">get value from</span> block.
+We want the "Question" label to update to the next question after one question has been answered.
 ---
 
 # Quiz App - Simple Quiz

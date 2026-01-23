@@ -117,10 +117,9 @@ Click the plus icon next to <span style="background-color:#f3aa44;font-weight:bo
 
 # High Low - Part 1: Random Number Guesser
 ![Setup](./Weeks/Week 2/images/w2_p1_14.png)
-Connect the <span style="background-color:#45b4a9;font-weight:bold;color:white">comparison</span> block to the <span style="background-color:#f3aa44;font-weight:bold;color:white">else if</span> section. This time, we will use the <span style="background-color:#b9e1dd;font-weight:bold"><</span> comparison operator.
-Connect the <span style="background-color:#70ce9c;font-weight:bold;color:white">Text_Input's Text</span> block to the left side of the <span style="background-color:#45b4a9;font-weight:bold;color:white">comparison</span> block and the <span style="background-color:#f87956;font-weight:bold;color:white">app variable answer</span> block to the right side of the <span style="background-color:#45b4a9;font-weight:bold;color:white">comparison</span> block.
-Connect the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Result's Text to</span> block inside the <span style="background-color:#f3aa44;font-weight:bold;color:white">do</span> part of the <span style="background-color:#f3aa44;font-weight:bold;color:white">else if</span> section.
-Replace "Label" with "Too low".
+1. Connect the <span style="background-color:#45b4a9;font-weight:bold;color:white">comparison</span> block to the <span style="background-color:#f3aa44;font-weight:bold;color:white">else if</span> section. This time, we will use the <span style="background-color:#b9e1dd;font-weight:bold"><</span> comparison operator.
+2. Connect the <span style="background-color:#70ce9c;font-weight:bold;color:white">Text_Input's Text</span> block to the left side of the <span style="background-color:#45b4a9;font-weight:bold;color:white">comparison</span> block and the <span style="background-color:#f87956;font-weight:bold;color:white">app variable answer</span> block to the right side of the <span style="background-color:#45b4a9;font-weight:bold;color:white">comparison</span> block.
+3. Connect the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Result's Text to</span> block inside the <span style="background-color:#f3aa44;font-weight:bold;color:white">do</span> part of the <span style="background-color:#f3aa44;font-weight:bold;color:white">else if</span> section. Replace "Label" with "Too low".
 We want the "Result" label to indicate that the guess is too low when it is lower than the answer.
 ---
 
