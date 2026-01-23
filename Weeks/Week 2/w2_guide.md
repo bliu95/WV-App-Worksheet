@@ -1,275 +1,280 @@
-# High Low
+# High Low - Part 1: Random Number Guesser
+You will design an app where the user will guess a number from 1 to 100. If the guess is too low or too high, let the user know accordingly. This keeps going until the user is able to guess the number from the information from prior guesses.
+---
+
+# High Low - Part 1: Random Number Guesser
 ![Setup](./Weeks/Week 2/images/w2_p1_1.png)
-Add a <span style="background-color:#90ee90">text input</span> for users to type in a guess. Rename it to <span style="font-style: italics">Text_Input</span>.
+Add a text input for users to type in a guess. We will rename it to "Text_Input".
 ---
 
-# High Low
+# High Low - Part 1: Random Number Guesser
 ![Setup](./Weeks/Week 2/images/w2_p1_2.png)
-Add a <span style="background-color:#90ee90">button</span> for users to submit the guess. Rename it to <span style="font-style: italics">Submit</span>.
+Add a button for users to submit the guess. We will rename it to “Submit”.
 ---
 
-# High Low
+# High Low - Part 1: Random Number Guesser
 ![Setup](./Weeks/Week 2/images/w2_p1_3.png)
-Add a <span style="background-color:#90ee90">label</span> to indicate whether the guess was correct, too high, or too low. Rename it to <span style="font-style: italics">Result</span>.
+Add a label to indicate whether the guess was correct, too high, or too low. We will rename it to "Result".<br>
+**Now, we will move onto blocks.**
 ---
 
-# High Low
-Now, we will move onto blocks.
----
-
-# High Low
-<span style="font-weight:bold">Block:</span> <span style="background-color:coral">initialize variable to</span>
+# High Low - Part 1: Random Number Guesser
+<span style="font-weight:bold">Block:</span> <span style="background-color:#f87956;font-weight:bold;color:white">initialize variable to</span>
 
 ![Block](./Weeks/Week 2/images/w2_p1_block_initAppVar.png)
 
-Found in the Variables Blocks drawer under Core Blocks. Used to create a variable when the app starts. The dropdown menu can be used to select the variable type or scope.
+<span style="font-style:italic">This block can be found in the <span style="font-weight:bold;color:#f87956">Variables Blocks</span> drawer under <span style="font-weight:bold">Core Blocks.</span></span><br>
+The <span style="background-color:#f87956;font-weight:bold;color:white">initialize variable to</span> block is used to create a variable when the app starts. The dropdown menu can be used to select the variable type or scope (app, stored, or cloud). It is good practice to give variables unique names so you can distinguish between different variables.
 ---
 
-# High Low
+# High Low - Part 1: Random Number Guesser
 ![Setup](./Weeks/Week 2/images/w2_p1_4.png)
-Create a variable with the <span style="background-color:coral">initialize variable to</span> block to hold the correct answer. Rename it to <span style="font-style: italics">answer</span>.
+Create a variable with the <span style="background-color:#f87956;font-weight:bold;color:white">initialize variable to</span> block to hold the correct answer. We will rename it to <span style="background-color:#f7c9bd;font-weight:bold">answer</span>.
 ---
 
-# High Low
-<span style="font-weight:bold">Block:</span> <span style="background-color:#4682b4">specify number</span>
+# High Low - Part 1: Random Number Guesser
+<span style="font-weight:bold">Block:</span> <span style="background-color:#6789cc;font-weight:bold;color:white">specify number</span>
 
 ![Block](./Weeks/Week 2/images/w2_p1_block_specifyNum.png)
 
-Found in the Math Blocks drawer under Core Blocks. Used to specify a number you want to use in your app. You can edit the number in the block.
+<span style="font-style:italic">This block can be found in the <span style="font-weight:bold;color:#6789cc">Math Blocks</span> drawer under <span style="font-weight:bold">Core Blocks.</span></span><br>
+The <span style="background-color:#6789cc;font-weight:bold;color:white">specify number</span> block is used to specify a number you want to use in your app. You can edit the number in the block to be any number of your choice.
 ---
 
-# High Low
+# High Low - Part 1: Random Number Guesser
 ![Setup](./Weeks/Week 2/images/w2_p1_5.png)
-Set the variable <span style="font-style: italics">answer</span> to a number of your choice by connecting the <span style="background-color:#4682b4">specify number</span> block to the <span style="background-color:coral">initialize variable to</span> block. Set it to 50.
+Set the variable <span style="background-color:#f7c9bd;font-weight:bold">answer</span> to a number of your choice by connecting the <span style="background-color:#6789cc;font-weight:bold;color:white">specify number</span> block to the <span style="background-color:#f87956;font-weight:bold;color:white">initialize variable to</span> block. We will set it to <span style="background-color:#c2d0eb;font-weight:bold">50</span>. This will be a temporary pre-set answer for testing purposes which we will change later.
 ---
 
-# High Low
-<span style="font-weight:bold">Block:</span> <span style="background-color:#ffce42">when Button Click</span>
+# High Low - Part 1: Random Number Guesser
+<span style="font-weight:bold">Block:</span> <span style="background-color:#f3aa44;font-weight:bold;color:white">when Button Click</span>
 
 ![Block](./Weeks/Week 2/images/w2_p1_block_whenButtonClick.png)
 
-Found in the Button drawer (named after your button) under UI Components. Used to run the blocks within the do part when the button is clicked.
+<span style="font-style:italic">This block can be found in the <span style="font-weight:bold">Button</span> drawer (with the name of your button) under <span style="font-weight:bold">UI Components.</span></span><br>
+The <span style="background-color:#f3aa44;font-weight:bold;color:white">when Button Click</span> block is used to run the blocks within the <span style="background-color:#f3aa44;font-weight:bold;color:white">do</span> part when the button is clicked.
 ---
 
-# High Low
+# High Low - Part 1: Random Number Guesser
 ![Setup](./Weeks/Week 2/images/w2_p1_6.png)
-Add the <span style="background-color:#ffce42">when Submit Click</span> block to add functionality to the button.
+Now, we want to add functionality to the button we added for the user to submit a guess. First, add the <span style="background-color:#f3aa44;font-weight:bold;color:white">when Submit Click</span> block.
 ---
 
-# High Low
-<span style="font-weight:bold">Block:</span> <span style="background-color:#ffce42">if</span>
+# High Low - Part 1: Random Number Guesser
+<span style="font-weight:bold">Block:</span> <span style="background-color:#f3aa44;font-weight:bold;color:white">if</span>
 
 ![Block](./Weeks/Week 2/images/w2_p1_block_if.png)
 
-Found in the Control Blocks drawer under Core Blocks. Checks a statement and runs the block inside do if the statement is true.
+<span style="font-style:italic">This block can be found in the <span style="font-weight:bold;color:#f3aa44">Control Blocks</span> drawer under <span style="font-weight:bold">Core Blocks.</span></span><br>
+The <span style="background-color:#f3aa44;font-weight:bold;color:white">if</span> block checks a statement and runs the block inside <span style="background-color:#f3aa44;font-weight:bold;color:white">do</span> if the statement is true. Think of it as: "If this statement is true, then do this."
 ---
 
-# High Low
+# High Low - Part 1: Random Number Guesser
 ![Setup](./Weeks/Week 2/images/w2_p1_7.png)
-Connect the <span style="background-color:#ffce42">if</span> block to the <span style="background-color:#ffce42">when Submit Click</span> block to perform an action based on a condition.
+Connect the <span style="background-color:#f3aa44;font-weight:bold;color:white">if</span> block to the <span style="background-color:#f3aa44;font-weight:bold;color:white">when Submit Click</span> block to perform an action based on a condition when the button is clicked.
 ---
 
-# High Low
-<span style="font-weight:bold">Block:</span> <span style="background-color:#20b2aa">comparison</span>
+# High Low - Part 1: Random Number Guesser
+<span style="font-weight:bold">Block:</span> <span style="background-color:#45b4a9;font-weight:bold;color:white">comparison</span>
 
 ![Block](./Weeks/Week 2/images/w2_p1_block_comparison.png)
 
-Found in the Logic Blocks drawer under Core Blocks. Compares two values and returns True or False based on whether the condition is met.
+<span style="font-style:italic">This block can be found in the <span style="font-weight:bold;color:#45b4a9">Logic Blocks</span> drawer under <span style="font-weight:bold">Core Blocks.</span></span><br>
+The <span style="background-color:#45b4a9;font-weight:bold;color:white">comparison</span> block compares two values and returns True or False based on whether the condition is met. The comparison operator <span style="background-color:#b9e1dd;font-weight:bold">=</span> is used to check if two values are equal to one another and returns True if they are equal or False if they are not. Use the dropdown menu to select a different comparison operator, such as <span style="background-color:#b9e1dd;font-weight:bold"><</span> or <span style="background-color:#b9e1dd;font-weight:bold">></span>.
 ---
 
-# High Low
+# High Low - Part 1: Random Number Guesser
 ![Setup](./Weeks/Week 2/images/w2_p1_8.png)
-Connect the <span style="background-color:#20b2aa">comparison</span> block to the if part of the <span style="background-color:#ffce42">if</span> block to compare the user's guess to the answer.
+Connect the <span style="background-color:#45b4a9;font-weight:bold;color:white">comparison</span> block to the <span style="background-color:#f3aa44;font-weight:bold;color:white">if</span> part of the <span style="background-color:#f3aa44;font-weight:bold;color:white">if</span> block to compare the user's guess to the answer.
 ---
 
-# High Low
+# High Low - Part 1: Random Number Guesser
 ![Setup](./Weeks/Week 2/images/w2_p1_9.png)
-Connect the <span style="background-color:#90ee90">Text_Input's Text</span> block to the left side of the <span style="background-color:#20b2aa">comparison</span> block.
+Connect the <span style="background-color:#70ce9c;font-weight:bold;color:white">Text_Input's Text</span> block to the left side of the <span style="background-color:#45b4a9;font-weight:bold;color:white">comparison</span> block. The <span style="background-color:#70ce9c;font-weight:bold;color:white">Text_Input's Text</span> block retrieves the text that the user types into the text input component. This corresponds to the user’s guess.
 ---
 
-# High Low
+# High Low - Part 1: Random Number Guesser
 ![Setup](./Weeks/Week 2/images/w2_p1_10.png)
-Connect the <span style="background-color:coral">app variable answer</span> block to the right side of the <span style="background-color:#20b2aa">comparison</span> block.
+Connect the <span style="background-color:#f87956;font-weight:bold;color:white">app variable answer</span> block to the right side of the <span style="background-color:#45b4a9;font-weight:bold;color:white">comparison</span> block. Now, we can compare the user’s guess from the <span style="background-color:#70ce9c;font-weight:bold;color:white">Text_Input's Text</span> block to the answer that is stored in the <span style="background-color:#f87956;font-weight:bold;color:white">app variable answer</span> block.
 ---
 
-# High Low
+# High Low - Part 1: Random Number Guesser
 ![Setup](./Weeks/Week 2/images/w2_p1_11.png)
-Connect the <span style="background-color:#3cb371">set Result's Text to</span> block to the do part of the <span style="background-color:#ffce42">if</span> block. Replace "Label" with "Correct".
+Connect the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Result's Text to</span> block to the <span style="background-color:#f3aa44;font-weight:bold;color:white">do</span> part of the <span style="background-color:#f3aa44;font-weight:bold;color:white">if</span> block. Replace "Label" with "Correct". We want the “Result” label to indicate that the guess is correct when it is equal to the answer.
 ---
 
-# High Low
+# High Low - Part 1: Random Number Guesser
 ![Setup](./Weeks/Week 2/images/w2_checkpoint.png)
-[<span style="font-weight:bold">Checkpoint #1: Correct Answer Check</span>]: Preview the app. See if the Result label indicates whether the guess is correct.
+<span style="font-weight:bold">[Checkpoint #1: Correct Answer Check]</span><br>
+Preview the app. See if the Result label indicates whether the guess is correct.<br>
+If it works, the “Result” label will indicate whether the guess is correct, but there is no indication whether the guess is incorrect. When the guess is incorrect, we want the “Result” label to indicate whether the guess is too high or too low.
 ---
 
-# High Low
+# High Low - Part 1: Random Number Guesser
 ![Setup](./Weeks/Week 2/images/w2_p1_13.png)
-Click the <span style="font-weight:bold">+</span> icon next to the if to add an <span style="font-style: italics">else if</span> section.
+Click the plus icon next to <span style="background-color:#f3aa44;font-weight:bold;color:white">if</span> to add an <span style="background-color:#f3aa44;font-weight:bold;color:white">else if</span> section. The <span style="background-color:#f3aa44;font-weight:bold;color:white">else if</span> section will allow us to check another condition when the guess is not equal to the answer.
 ---
 
-# High Low
+# High Low - Part 1: Random Number Guesser
 ![Setup](./Weeks/Week 2/images/w2_p1_14.png)
-Connect the <span style="background-color:#20b2aa">comparison</span> block to the else if section. Use the <span style="font-weight:bold"><</span> comparison operator. Connect <span style="background-color:#90ee90">Text_Input's Text</span> block and the <span style="background-color:coral">app variable answer</span> block.
-
-Add a <span style="background-color:#3cb371">set Result's Text to</span> block inside the else if section. Change the text to "Too low".
+Connect the <span style="background-color:#45b4a9;font-weight:bold;color:white">comparison</span> block to the <span style="background-color:#f3aa44;font-weight:bold;color:white">else if</span> section. This time, we will use the <span style="background-color:#b9e1dd;font-weight:bold"><</span> comparison operator.
+Connect the <span style="background-color:#70ce9c;font-weight:bold;color:white">Text_Input's Text</span> block to the left side of the <span style="background-color:#45b4a9;font-weight:bold;color:white">comparison</span> block and the <span style="background-color:#f87956;font-weight:bold;color:white">app variable answer</span> block to the right side of the <span style="background-color:#45b4a9;font-weight:bold;color:white">comparison</span> block.
+Connect the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Result's Text to</span> block inside the <span style="background-color:#f3aa44;font-weight:bold;color:white">do</span> part of the <span style="background-color:#f3aa44;font-weight:bold;color:white">else if</span> section.
+Replace "Label" with "Too low".
+We want the "Result" label to indicate that the guess is too low when it is lower than the answer.
 ---
 
-# High Low
+# High Low - Part 1: Random Number Guesser
 ![Setup](./Weeks/Week 2/images/w2_checkpoint.png)
-[<span style="font-weight:bold">Checkpoint #2: Too Low Logic</span>]: Preview the app. See if the Result label indicates whether the guess is too low.
+<span style="font-weight:bold">[Checkpoint #2: Too Low Logic]</span><br>
+Preview the app. See if the "Result" label indicates whether the guess is too low.<br>
+If it works, now the “Result” label will indicate whether the guess is correct or too low, but there is no indication whether the guess is too high. When the guess is too high, we want the “Result” label to indicate that the guess is too high.
 ---
 
-# High Low
+# High Low - Part 1: Random Number Guesser
+<span style="font-weight:bold">Block:</span> <span style="background-color:#f3aa44;font-weight:bold;color:white">if-else</span>
+
+![Block](./Weeks/Week 2/images/w2_p1_block_ifElse.png)
+
+<span style="font-style:italic">This block can also be found in the <span style="font-weight:bold;color:#f3aa44">Control Blocks</span> drawer under <span style="font-weight:bold">Core Blocks.</span></span><br>
+In an <span style="background-color:#f3aa44;font-weight:bold;color:white">if-else</span> block, the <span style="background-color:#f3aa44;font-weight:bold;color:white">do</span> part runs if the statement is true and the <span style="background-color:#f3aa44;font-weight:bold;color:white">else</span> part runs if the statement is false. Think of it as: "If this statement is true, then do this. Otherwise, do this instead."
+---
+
+# High Low - Part 1: Random Number Guesser
 ![Setup](./Weeks/Week 2/images/w2_p1_16.png)
-Click the <span style="font-weight:bold">+</span> icon next to do to add an <span style="font-style: italics">else</span> section.
+Click the plus icon next to <span style="background-color:#f3aa44;font-weight:bold;color:white">do</span> to add an <span style="background-color:#f3aa44;font-weight:bold;color:white">else</span> section. The <span style="background-color:#f3aa44;font-weight:bold;color:white">else</span> section will run when the guess is neither equal to nor lower than the answer.
 ---
 
-# High Low
+# High Low - Part 1: Random Number Guesser
 ![Setup](./Weeks/Week 2/images/w2_p1_17.png)
-Connect the <span style="background-color:#3cb371">set Result's Text to</span> block to the do part of the else section. Replace "Label" with "Too high".
+Connect the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Result's Text to</span> block to the <span style="background-color:#f3aa44;font-weight:bold;color:white">do</span> part of the <span style="background-color:#f3aa44;font-weight:bold;color:white">else</span> section. Replace "Label" with "Too high". Since we already checked when the guess is equal to or lower than the answer, the only possibility left is whether the guess is too high. There is no need to use the <span style="background-color:#45b4a9;font-weight:bold;color:white">comparison</span> block here, so we can simply add the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Result's Text to</span> block.
 ---
 
-# High Low
+# High Low - Part 1: Random Number Guesser
 ![Setup](./Weeks/Week 2/images/w2_checkpoint.png)
-[<span style="font-weight:bold">Checkpoint #3: Too High Logic</span>]: Preview the app. See if the Result label indicates whether the guess is too high.
+<span style="font-weight:bold">[Checkpoint #3: Too High Logic]</span><br>
+Preview the app. See if the "Result" label indicates whether the guess is too high.<br>
+If it works, now the “Result” label will indicate whether the guess is correct, too low, or too high, but there is only one possible answer which was pre-set to 50 in Step 5. The number should be randomly chosen so the user won’t know what the answer is every time.
 ---
 
-# High Low
-<span style="font-weight:bold">Block:</span> <span style="background-color:#4682b4">random integer from 1 to 100</span>
+# High Low - Part 1: Random Number Guesser
+<span style="font-weight:bold">Block:</span> <span style="background-color:#6789cc;font-weight:bold;color:white">random integer from [1] to [100]</span>
 
 ![Block](./Weeks/Week 2/images/w2_p1_block_randInt.png)
 
-Found in the Math Blocks drawer under Core Blocks. Returns a random integer within a specified range, inclusive of the provided integers.
+<span style="font-style:italic">This block can be found in the <span style="font-weight:bold;color:#6789cc">Math Blocks</span> drawer under <span style="font-weight:bold">Core Blocks.</span></span><br>
+The <span style="background-color:#6789cc;font-weight:bold;color:white">random integer from [1] to [100]</span> block returns a random integer within a specified range, inclusive of the provided integers.
 ---
 
-# High Low
+# High Low - Part 1: Random Number Guesser
 ![Setup](./Weeks/Week 2/images/w2_p1_19.png)
-Replace the <span style="background-color:#4682b4">specify number</span> block with the <span style="background-color:#4682b4">random integer from 1 to 100</span> block for a randomized answer.
+Replace the <span style="background-color:#6789cc;font-weight:bold;color:white">specify number</span> block with the <span style="background-color:#6789cc;font-weight:bold;color:white">random integer from [1] to [100]</span> block. We no longer want the answer to be pre-set, but rather a random number that will generate each time the app is opened.
 ---
 
-# High Low
+# High Low - Part 1: Random Number Guesser
 ![Setup](./Weeks/Week 2/images/w2_checkpoint.png)
-[<span style="font-weight:bold">Checkpoint #4: Random Number</span>]: Preview the app. See if the number is different each time.
+<span style="font-weight:bold">[Checkpoint #4: Random Number]</span><br>
+Preview the app. See if the number is different each time.<br>
+If it works, you now have a fully-functional random number guesser!
 ---
 
-# High Low - Part 2
+# High Low - Part 2: Real-Time Updates
+Instead of using a random number generator to determine an answer, let's make another app where there will be two users: a **Guesser** and a **Clue Giver**. The **Guesser** will make a guess, and the **Clue Giver** will tell the **Guesser** whether they are getting closer or further away after seeing the guess.<br>
+The **Clue Giver** and **Guesser** will be using the same app to communicate with each other. Instead of guessing a number, the **Clue Giver** can decide on a different method or topic.
+---
+
+# High Low - Part 2: Real-Time Updates
 ![Setup](./Weeks/Week 2/images/w2_p2_1.png)
-In Part 2, we will create a real-time communication system. Two users will communicate: a Guesser makes guesses while a Clue Giver provides feedback.
-
-In a new project, add a <span style="background-color:#90ee90">text input</span> for the two users to type in their message. Rename it to <span style="font-style: italics">Text_Input</span>.
+In a new project, add a text input for the two users to type in their message. We will rename it to "Text_Input".
 ---
 
-# High Low - Part 2
+# High Low - Part 2: Real-Time Updates
 ![Setup](./Weeks/Week 2/images/w2_p2_2.png)
-Add a <span style="background-color:#90ee90">button</span> for users to submit their message. Rename it to <span style="font-style: italics">Submit</span>.
+Add a button for users to submit their message. We will rename it to "Submit".
 ---
 
-# High Low - Part 2
+# High Low - Part 2: Real-Time Updates
 ![Setup](./Weeks/Week 2/images/w2_p2_3.png)
-Add a <span style="background-color:#90ee90">label</span> to display submitted messages. Rename it to <span style="font-style: italics">Message</span>.
+Add a label to display submitted messages. We will rename it to "Message".<br>
+**Now, we will move onto blocks.**
 ---
 
-# High Low - Part 2
-Now, we will move onto blocks using cloud variables.
----
-
-# High Low - Part 2
-<span style="font-weight:bold">Block:</span> <span style="background-color:#9370db">cloud variable</span>
+# High Low - Part 2: Real-Time Updates
+<span style="font-weight:bold">Block:</span> <span style="font-weight:bold;">Cloud Variable</span>
 
 ![Block](./Weeks/Week 2/images/w2_p2_block_initCloudVar.png)
 
-Found in the Variables Blocks drawer under Core Blocks. Allows you to store data in the cloud. This data can be accessed from multiple devices.
+Cloud variables allow you to store data in the cloud. This data can be accessed from multiple devices, which is suitable for data that your user may want to access from multiple devices.<br>
+Remember, this is the same <span style="background-color:#f87956;font-weight:bold;color:white">initialize variable to</span> block introduced in Part 1. Use the dropdown menu to select the <span style="background-color:#f7c9bd;font-weight:bold">cloud</span> variable type.
 ---
 
-# High Low - Part 2
+# High Low - Part 2: Real-Time Updates
 ![Setup](./Weeks/Week 2/images/w2_p2_4.png)
-Create a <span style="background-color:#9370db">cloud variable</span> with the <span style="background-color:coral">initialize variable to</span> block. Rename it to <span style="font-style: italics">text</span>.
-
-**Important:** Use a cloud variable, not an app variable!
+Create a cloud variable with the <span style="background-color:#f87956;font-weight:bold;color:white">initialize variable to</span> block. We will rename it to <span style="background-color:#f7c9bd;font-weight:bold">text</span>. We want to use a cloud variable instead of an app variable this time so that the data can be accessed from multiple devices.
 ---
 
-# High Low - Part 2
+# High Low - Part 2: Real-Time Updates
 ![Setup](./Weeks/Week 2/images/w2_p2_5.png)
-Add the <span style="background-color:#ffce42">when Submit Click</span> block for the button.
+Now, we want to add functionality to the button we added for the users to submit a message. First, add the <span style="background-color:#f3aa44;font-weight:bold;color:white">when Submit Click</span> block.
 ---
 
-# High Low - Part 2
-<span style="font-weight:bold">Block:</span> <span style="background-color:#9370db">set variable to</span>
+# High Low - Part 2: Real-Time Updates
+<span style="font-weight:bold">Block:</span> <span style="background-color:#f87956;font-weight:bold;color:white">set variable to</span>
 
 ![Block](./Weeks/Week 2/images/w2_p2_block_setVarTo.png)
 
-Found in the Variables Blocks drawer under Core Blocks. Allows you to set a variable within a block event.
+<span style="font-style:italic">This block can be found in the <span style="font-weight:bold;color:#f87956">Variables Blocks</span> drawer under <span style="font-weight:bold">Core Blocks.</span></span><br>
+The <span style="background-color:#f87956;font-weight:bold;color:white">set variable to</span> block allows you to set a variable to a value within a block event.
 ---
 
-# High Low - Part 2
+# High Low - Part 2: Real-Time Updates
 ![Setup](./Weeks/Week 2/images/w2_p2_6.png)
-Connect the <span style="background-color:#9370db">set cloud variable to</span> block to the <span style="background-color:#ffce42">when Submit Click</span> block to update the cloud variable <span style="font-style: italics">text</span>.
+Connect the <span style="background-color:#f87956;font-weight:bold;color:white">set variable to</span> block to the <span style="background-color:#f3aa44;font-weight:bold;color:white">when Submit Click</span> block. We want the cloud variable <span style="background-color:#f7c9bd;font-weight:bold">text</span> to update when the "Submit" button is clicked.
 ---
 
-# High Low - Part 2
+# High Low - Part 2: Real-Time Updates
 ![Setup](./Weeks/Week 2/images/w2_p2_7.png)
-Connect the <span style="background-color:#90ee90">Text_Input's Text</span> block to the <span style="background-color:#9370db">set cloud variable to</span> block to set the cloud variable <span style="font-style: italics">text</span>.
+Connect the <span style="background-color:#70ce9c;font-weight:bold;color:white">Text_Input's Text</span> block to the <span style="background-color:#f87956;font-weight:bold;color:white">set variable to</span> block to set the cloud variable <span style="background-color:#f7c9bd;font-weight:bold">text</span> to the text written in Text_Input when the “Submit” button is clicked, since we want that information to be accessible across multiple devices.
 ---
 
-# High Low - Part 2
-<span style="font-weight:bold">Block:</span> <span style="background-color:#ffce42">when variable initializes or changes</span>
+# High Low - Part 2: Real-Time Updates
+<span style="font-weight:bold">Block:</span> <span style="background-color:#f3aa44;font-weight:bold;color:white">when variable initializes or changes</span>
 
 ![Block](./Weeks/Week 2/images/w2_p2_block_whenVarChange.png)
 
-Found in the Variables Blocks drawer under Core Blocks after creating a variable. Used to define how the app behaves when the variable initializes or changes.
+<span style="font-style:italic">This block can be found in the <span style="font-weight:bold;color:#f87956">Variables Blocks</span> drawer under <span style="font-weight:bold">Core Blocks</span> after a variable has been created.</span><br>
+You can use the <span style="background-color:#f3aa44;font-weight:bold;color:white">when variable initializes or changes</span> block to define how the app behaves when the variable initializes or changes.
 ---
 
-# High Low - Part 2
+# High Low - Part 2: Real-Time Updates
 ![Setup](./Weeks/Week 2/images/w2_p2_8.png)
-Add the <span style="background-color:#ffce42">when cloud variable text initializes or changes</span> block to define how the app behaves when the variable changes.
+Add the <span style="background-color:#f3aa44;font-weight:bold;color:white">when variable initializes or changes</span> block. We want changes to be made when the cloud variable <span style="background-color:#f7c9bd;font-weight:bold">text</span> is altered.
 ---
 
-# High Low - Part 2
+# High Low - Part 2: Real-Time Updates
 ![Setup](./Weeks/Week 2/images/w2_p2_9.png)
-Connect the <span style="background-color:#3cb371">set Message's Text to</span> block to the <span style="background-color:#ffce42">when cloud variable text initializes or changes</span> block.
+Connect the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Message's Text to</span> block to the <span style="background-color:#f3aa44;font-weight:bold;color:white">when variable initializes or changes</span> block. We want the “Message” label to change whenever the cloud variable is altered.
 ---
 
-# High Low - Part 2
+# High Low - Part 2: Real-Time Updates
 ![Setup](./Weeks/Week 2/images/w2_p2_10.png)
-Connect the <span style="background-color:#9370db">cloud variable text</span> block to the <span style="background-color:#3cb371">set Message's Text to</span> block so users can communicate.
+Connect the <span style="background-color:#f87956;font-weight:bold;color:white">cloud variable text</span> block to the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Message's Text to</span> block. We want the “Message” label to be populated with the information stored in the cloud variable <span style="background-color:#f7c9bd;font-weight:bold">text</span> so that the users can communicate with one another.
 ---
 
-# High Low - Part 2
+# High Low - Part 2: Real-Time Updates
 ![Setup](./Weeks/Week 2/images/w2_checkpoint.png)
-[<span style="font-weight:bold">Checkpoint #5: Real-Time Updates</span>]: Preview the app. See if the Message label updates to what a user enters after clicking Submit.
+<span style="font-weight:bold">[Checkpoint #5: Real-Time Updates]</span><br>
+Preview the app. Check the functionality of real-time message display.<br>
+If it works, you now have a fully-functional guessing game that two players can play on separate devices!
 ---
 
-# High Low - Extension 1
-**Extension 1: Multiple Screens**
+# High Low - Extension #1: Multiple Screens
+<span style="font-weight:bold">[Extension #1: Multiple Screens]</span><br>
+Now, instead of both the **Guesser** and **Clue Giver** using the same screen, let's have each of them have their own dedicated screen.<br>
+Starting with:
+1. Make a copy of your project from Part 2.
+2. Have 3 screens total: a home screen to choose your role, a **Guesser** screen for making guesses, and a **Clue Giver** screen for providing feedback.
+3. Give the **Guesser** and **Clue Giver** the components needed to input text on their respective screens.
+4. Add the blocks for them to communicate with each other.
 
-In this extension, you will create dedicated screens for the Guesser and Clue Giver.
-
-Make a copy of your project from Part 2.
----
-
-# High Low - Extension 1
-Have 3 screens total:
-1. A home screen to choose your role
-2. A Guesser screen for making guesses
-3. A Clue Giver screen for providing feedback
----
-
-# High Low - Extension 1
-Give the Guesser and Clue Giver the components needed to input text on their respective screens.
----
-
-# High Low - Extension 1
-<span style="font-weight:bold">Block:</span> <span style="background-color:#ffce42">navigate to</span>
-
-![Block](./Weeks/Week 2/images/w2_ext1_block_navigateTo.png)
-
-Found in the Control Blocks drawer under Core Blocks. Takes the user to the defined screen.
----
-
-# High Low - Extension 1
-Add the blocks for the Guesser and Clue Giver to communicate with each other using cloud variables.
----
-
-# High Low - Extension 1
-![Setup](./Weeks/Week 2/images/w2_checkpoint.png)
-[<span style="font-weight:bold">Checkpoint #6: Multiple Screens</span>]: Preview the app. Test that you can navigate between screens and that communication works between the Guesser and Clue Giver screens.
+<div class="block-intro"><div class="block-intro-header">Block: <span style="background-color:#f3aa44;font-weight:bold;color:white">navigate to</span></div><img src="./Weeks/Week 2/images/w2_ext1_block_navigateTo.png" alt="Block: navigate to"><div class="block-intro-description"><span style="font-style:italic">This block can be found in the <span style="font-weight:bold;color:#f3aa44">Control Blocks</span> drawer under <span style="font-weight:bold">Core Blocks.</span></span><br>The <span style="background-color:#f3aa44;font-weight:bold;color:white">navigate to</span> block takes the user to the defined screen.</div></div>
