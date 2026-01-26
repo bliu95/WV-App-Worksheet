@@ -4,27 +4,27 @@ Your goal is to build a quiz app. Users should be able to see questions, provide
 
 # Quiz App - Simple Quiz
 ![Setup](./Weeks/Week 4/images/w4_1.png)
-Create a local data source that has the questions and answers for your quiz. Rename the column containing the questions to "Questions" and rename the column containing the answers to "Answers".
+Create a local data source that has the questions and answers for your quiz. Rename the column containing the questions to “Questions” and rename the column containing the answers to “Answers”.
 ---
 
 # Quiz App - Simple Quiz
 ![Setup](./Weeks/Week 4/images/w4_2.png)
-Add a label to display a question. We will rename it to "Question".
+Add a label to display a question. We will rename it to “Question”.
 ---
 
 # Quiz App - Simple Quiz
 ![Setup](./Weeks/Week 4/images/w4_3.png)
-Add a text input for users to type in an answer. We will rename it to "Text_Input".
+Add a text input for users to type in an answer. We will rename it to “Text_Input”.
 ---
 
 # Quiz App - Simple Quiz
 ![Setup](./Weeks/Week 4/images/w4_4.png)
-Add a button for users to submit an answer. We will rename it to "Submit".
+Add a button for users to submit an answer. We will rename it to “Submit”.
 ---
 
 # Quiz App - Simple Quiz
 ![Setup](./Weeks/Week 4/images/w4_5.png)
-Add a label to indicate whether the user's answer was correct or incorrect. We will rename it to "Result".<br>
+Add a label to indicate whether the user's answer was correct or incorrect. We will rename it to “Result”.<br>
 **Now, we will move onto blocks.**
 ---
 
@@ -54,12 +54,12 @@ We want the first question to show up on the screen when the user starts the app
 
 # Quiz App - Simple Quiz
 ![Setup](./Weeks/Week 4/images/w4_9.png)
-Connect the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Question's Text to</span> block to the <span style="background-color:#f3aa44;font-weight:bold;color:white">when Screen1 Opens</span> block. We want the "Question" label to be populated with the first question in the quiz when the app starts.
+Connect the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Question's Text to</span> block to the <span style="background-color:#f3aa44;font-weight:bold;color:white">when Screen1 Opens</span> block. We want the “Question” label to be populated with the first question in the quiz when the app starts.
 ---
 
 # Quiz App - Simple Quiz
 ![Setup](./Weeks/Week 4/images/w4_10.png)
-Connect the <span style="background-color:#735ca5;font-weight:bold;color:white">get value from</span> block to the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Question's Text to</span> block. Make sure the column whose value is being retrieved is <span style="background-color:#c7bedc;font-weight:bold">Questions</span>. We want the "Question" label to be populated with a question retrieved from the data source.
+Connect the <span style="background-color:#735ca5;font-weight:bold;color:white">get value from</span> block to the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Question's Text to</span> block. Make sure the column whose value is being retrieved is <span style="background-color:#c7bedc;font-weight:bold">Questions</span>. We want the “Question” label to be populated with a question retrieved from the data source.
 ---
 
 # Quiz App - Simple Quiz
@@ -70,8 +70,8 @@ Connect the <span style="background-color:#f87956;font-weight:bold;color:white">
 # Quiz App - Simple Quiz
 ![Setup](./Weeks/Week 4/images/w4_checkpoint.png)
 <span style="font-weight:bold">[Checkpoint #1: Display First Question]</span><br>
-Preview the app. See if the "Question" label displays the first question from the data source when the app starts.<br>
-If it works, the "Question" label will function as expected, but there is no other functionality for the app. We want the user to be able to submit an answer and get an indication of whether their answer is correct or not.
+Preview the app. See if the “Question” label displays the first question from the data source when the app starts.<br>
+If it works, the “Question” label will function as expected, but there is no other functionality for the app. We want the user to be able to submit an answer and get an indication of whether their answer is correct or not.
 ---
 
 # Quiz App - Simple Quiz
@@ -106,19 +106,19 @@ Connect the <span style="background-color:#f87956;font-weight:bold;color:white">
 
 # Quiz App - Simple Quiz
 ![Setup](./Weeks/Week 4/images/w4_19.png)
-Connect the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Result's Text to</span> block to the <span style="background-color:#f3aa44;font-weight:bold;color:white">do</span> part of the <span style="background-color:#f3aa44;font-weight:bold;color:white">if-else</span> block. Replace "Label" with "Correct". We want the "Result" label to indicate that the user's answer is correct when it is equal to the correct answer.
+Connect the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Result's Text to</span> block to the <span style="background-color:#f3aa44;font-weight:bold;color:white">do</span> part of the <span style="background-color:#f3aa44;font-weight:bold;color:white">if-else</span> block. Replace "Label" with "Correct". We want the “Result” label to indicate that the user's answer is correct when it is equal to the correct answer.
 ---
 
 # Quiz App - Simple Quiz
 ![Setup](./Weeks/Week 4/images/w4_20.png)
-Connect another <span style="background-color:#3f9e83;font-weight:bold;color:white">set Result's Text to</span> block to the <span style="background-color:#f3aa44;font-weight:bold;color:white">else</span> part of the <span style="background-color:#f3aa44;font-weight:bold;color:white">if-else</span> block. Replace "Label" with "Incorrect". Since we already checked when the user's answer is correct, the only possibility left is whether the user's answer is incorrect. There is no need to use the <span style="background-color:#45b4a9;font-weight:bold;color:white">comparison</span> block here, so we can simply add the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Result's Text to</span> block.
+Connect another <span style="background-color:#3f9e83;font-weight:bold;color:white">set Result's Text to</span> block to the <span style="background-color:#f3aa44;font-weight:bold;color:white">else</span> part of the <span style="background-color:#f3aa44;font-weight:bold;color:white">if-else</span> block. Replace “Label” with “Incorrect”. Since we already checked when the user's answer is correct, the only possibility left is whether the user's answer is incorrect. There is no need to use the <span style="background-color:#45b4a9;font-weight:bold;color:white">comparison</span> block here, so we can simply add the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Result's Text to</span> block.
 ---
 
 # Quiz App - Simple Quiz
 ![Setup](./Weeks/Week 4/images/w4_checkpoint.png)
 <span style="font-weight:bold">[Checkpoint #2: Answer Validation]</span><br>
-Preview the app. See if the "Result" label accurately indicates when an answer is correct and when an answer is incorrect.<br>
-If it works, the "Result" label will function as expected, but the quiz will not move onto the next question. Also, the answer that the user typed remains in Text_Input.
+Preview the app. See if the “Result” label accurately indicates when an answer is correct and when an answer is incorrect.<br>
+If it works, the “Result” label will function as expected, but the quiz will not move onto the next question. Also, the answer that the user typed remains in Text_Input.
 ---
 
 # Quiz App - Simple Quiz
@@ -140,7 +140,7 @@ Connect the <span style="background-color:#f87956;font-weight:bold;color:white">
 1. Connect the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Question's Text to</span> block to the <span style="background-color:#f3aa44;font-weight:bold;color:white">do</span> part of the <span style="background-color:#f3aa44;font-weight:bold;color:white">when Submit Click</span> block.
 2. Connect the <span style="background-color:#735ca5;font-weight:bold;color:white">get value from</span> block to the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Question's Text to</span> block. Make sure the column whose value is being retrieved is <span style="background-color:#c7bedc;font-weight:bold">Questions</span>.
 3. Connect the <span style="background-color:#f87956;font-weight:bold;color:white">app variable questionNumber</span> block to the <span style="background-color:#735ca5;font-weight:bold;color:white">get value from</span> block.
-We want the "Question" label to update to the next question after one question has been answered.
+We want the “Question” label to update to the next question after one question has been answered.
 ---
 
 # Quiz App - Simple Quiz
@@ -152,7 +152,7 @@ To clear the text in Text_Input, connect the <span style="background-color:#3f9e
 ![Setup](./Weeks/Week 4/images/w4_checkpoint.png)
 <span style="font-weight:bold">[Checkpoint #3: Advance to Next Question]</span><br>
 Preview the app. Check that when the answer is correct, the user sees the next question and what the user types in Text_Input clears after each question.<br>
-If it works, now you can see all the questions in the quiz; however, once you have answered the last question, you will see that the app tries to show a question that does not exist by filling in the "Question" label with "null". We should end the quiz after the last question has been answered.
+If it works, now you can see all the questions in the quiz; however, once you have answered the last question, you will see that the app tries to show a question that does not exist by filling in the “Question” label with “null”. We should end the quiz after the last question has been answered.
 ---
 
 # Quiz App - Simple Quiz
@@ -191,7 +191,7 @@ Now, we can move the <span style="background-color:#f87956;font-weight:bold;colo
 
 # Quiz App - Simple Quiz
 ![Setup](./Weeks/Week 4/images/w4_31.png)
-Connect the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Question's Text to</span> block to the <span style="background-color:#f3aa44;font-weight:bold;color:white">else</span> part of the <span style="background-color:#f3aa44;font-weight:bold;color:white">if-else</span> block. Replace "Label" with "The quiz is over". We want the "Question" label to indicate when the user has reached the end of the quiz.
+Connect the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Question's Text to</span> block to the <span style="background-color:#f3aa44;font-weight:bold;color:white">else</span> part of the <span style="background-color:#f3aa44;font-weight:bold;color:white">if-else</span> block. Replace “Label” with “The quiz is over”. We want the “Question” label to indicate when the user has reached the end of the quiz.
 ---
 
 # Quiz App - Simple Quiz
@@ -236,7 +236,7 @@ Instead of the user typing in the correct answer, have them select between multi
 The <span style="background-color:#735ca5;font-weight:bold;color:white">get row object from</span> block returns the row object of the specified row id. The row object can be used with Object Blocks.</div></div>
 
 <div class="block-intro"><div class="block-intro-header">Block: <span style="background-color:#f89da2;font-weight:bold;color:white">get property of object</span></div><img src="./Weeks/Week 4/images/w4_ext4_block_getPropertyOfObject.png" alt="Block: get property of object"><div class="block-intro-description"><span style="font-style:italic">This block can be found in the <span style="font-weight:bold;color:#f89da2">Objects Blocks</span> drawer under <span style="font-weight:bold">Core Blocks.</span></span><br>
-The <span style="background-color:#f89da2;font-weight:bold;color:white">get property of object</span> block allows you to read the value of an object's property. If the object does not have a property with this name, it will return "undefined".</div></div>
+The <span style="background-color:#f89da2;font-weight:bold;color:white">get property of object</span> block allows you to read the value of an object's property. If the object does not have a property with this name, it will return “undefined”.</div></div>
 ---
 
 # Simple Quiz - Extension #4.5: Multiple Choice with Functions
