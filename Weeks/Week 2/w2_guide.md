@@ -4,7 +4,7 @@ You will design an app where the user will guess a number from 1 to 100. If the 
 
 # High Low - Part 1: Random Number Guesser
 ![Setup](./Weeks/Week 2/images/w2_p1_1.png)
-Add a text input for users to type in a guess. We will rename it to "Text_Input".
+Add a text input for users to type in a guess. We will rename it to “Text_Input”.
 ---
 
 # High Low - Part 1: Random Number Guesser
@@ -14,7 +14,7 @@ Add a button for users to submit the guess. We will rename it to “Submit”.
 
 # High Low - Part 1: Random Number Guesser
 ![Setup](./Weeks/Week 2/images/w2_p1_3.png)
-Add a label to indicate whether the guess was correct, too high, or too low. We will rename it to "Result".<br>
+Add a label to indicate whether the guess was correct, too high, or too low. We will rename it to “Result”.<br>
 **Now, we will move onto blocks.**
 ---
 
@@ -66,7 +66,7 @@ Now, we want to add functionality to the button we added for the user to submit 
 ![Block](./Weeks/Week 2/images/w2_p1_block_if.png)
 
 <span style="font-style:italic">This block can be found in the <span style="font-weight:bold;color:#f3aa44">Control Blocks</span> drawer under <span style="font-weight:bold">Core Blocks.</span></span><br>
-The <span style="background-color:#f3aa44;font-weight:bold;color:white">if</span> block checks a statement and runs the block inside <span style="background-color:#f3aa44;font-weight:bold;color:white">do</span> if the statement is true. Think of it as: "If this statement is true, then do this."
+The <span style="background-color:#f3aa44;font-weight:bold;color:white">if</span> block checks a statement and runs the block inside <span style="background-color:#f3aa44;font-weight:bold;color:white">do</span> if the statement is true. Think of it as: “If this statement is true, then do this.”
 ---
 
 # High Low - Part 1: Random Number Guesser
@@ -100,13 +100,13 @@ Connect the <span style="background-color:#f87956;font-weight:bold;color:white">
 
 # High Low - Part 1: Random Number Guesser
 ![Setup](./Weeks/Week 2/images/w2_p1_11.png)
-Connect the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Result's Text to</span> block to the <span style="background-color:#f3aa44;font-weight:bold;color:white">do</span> part of the <span style="background-color:#f3aa44;font-weight:bold;color:white">if</span> block. Replace "Label" with "Correct". We want the “Result” label to indicate that the guess is correct when it is equal to the answer.
+Connect the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Result's Text to</span> block to the <span style="background-color:#f3aa44;font-weight:bold;color:white">do</span> part of the <span style="background-color:#f3aa44;font-weight:bold;color:white">if</span> block. Replace “Label” with “Correct”. We want the “Result” label to indicate that the guess is correct when it is equal to the answer.
 ---
 
 # High Low - Part 1: Random Number Guesser
 ![Setup](./Weeks/Week 2/images/w2_checkpoint.png)
 <span style="font-weight:bold">[Checkpoint #1: Correct Answer Check]</span><br>
-Preview the app. See if the "Result" label indicates whether the guess is correct.<br>
+Preview the app. See if the “Result” label indicates whether the guess is correct.<br>
 If it works, the “Result” label will indicate whether the guess is correct, but there is no indication whether the guess is incorrect. When the guess is incorrect, we want the “Result” label to indicate whether the guess is too high or too low.
 ---
 
@@ -119,14 +119,14 @@ Click the plus icon next to <span style="background-color:#f3aa44;font-weight:bo
 ![Setup](./Weeks/Week 2/images/w2_p1_14.png)
 1. Connect the <span style="background-color:#45b4a9;font-weight:bold;color:white">comparison</span> block to the <span style="background-color:#f3aa44;font-weight:bold;color:white">else if</span> section. This time, we will use the <span style="background-color:#b9e1dd;font-weight:bold"><</span> comparison operator.
 2. Connect the <span style="background-color:#70ce9c;font-weight:bold;color:white">Text_Input's Text</span> block to the left side of the <span style="background-color:#45b4a9;font-weight:bold;color:white">comparison</span> block and the <span style="background-color:#f87956;font-weight:bold;color:white">app variable answer</span> block to the right side of the <span style="background-color:#45b4a9;font-weight:bold;color:white">comparison</span> block.
-3. Connect the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Result's Text to</span> block inside the <span style="background-color:#f3aa44;font-weight:bold;color:white">do</span> part of the <span style="background-color:#f3aa44;font-weight:bold;color:white">else if</span> section. Replace "Label" with "Too low".
-We want the "Result" label to indicate that the guess is too low when it is lower than the answer.
+3. Connect the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Result's Text to</span> block inside the <span style="background-color:#f3aa44;font-weight:bold;color:white">do</span> part of the <span style="background-color:#f3aa44;font-weight:bold;color:white">else if</span> section. Replace “Label” with “Too low”.
+We want the “Result” label to indicate that the guess is too low when it is lower than the answer.
 ---
 
 # High Low - Part 1: Random Number Guesser
 ![Setup](./Weeks/Week 2/images/w2_checkpoint.png)
 <span style="font-weight:bold">[Checkpoint #2: Too Low Logic]</span><br>
-Preview the app. See if the "Result" label indicates whether the guess is too low.<br>
+Preview the app. See if the “Result” label indicates whether the guess is too low.<br>
 If it works, now the “Result” label will indicate whether the guess is correct or too low, but there is no indication whether the guess is too high. When the guess is too high, we want the “Result” label to indicate that the guess is too high.
 ---
 
@@ -136,7 +136,7 @@ If it works, now the “Result” label will indicate whether the guess is corre
 ![Block](./Weeks/Week 2/images/w2_p1_block_ifElse.png)
 
 <span style="font-style:italic">This block can also be found in the <span style="font-weight:bold;color:#f3aa44">Control Blocks</span> drawer under <span style="font-weight:bold">Core Blocks.</span></span><br>
-In an <span style="background-color:#f3aa44;font-weight:bold;color:white">if-else</span> block, the <span style="background-color:#f3aa44;font-weight:bold;color:white">do</span> part runs if the statement is true and the <span style="background-color:#f3aa44;font-weight:bold;color:white">else</span> part runs if the statement is false. Think of it as: "If this statement is true, then do this. Otherwise, do this instead."
+In an <span style="background-color:#f3aa44;font-weight:bold;color:white">if-else</span> block, the <span style="background-color:#f3aa44;font-weight:bold;color:white">do</span> part runs if the statement is true and the <span style="background-color:#f3aa44;font-weight:bold;color:white">else</span> part runs if the statement is false. Think of it as: “If this statement is true, then do this. Otherwise, do this instead.”
 ---
 
 # High Low - Part 1: Random Number Guesser
@@ -146,13 +146,13 @@ Click the plus icon next to <span style="background-color:#f3aa44;font-weight:bo
 
 # High Low - Part 1: Random Number Guesser
 ![Setup](./Weeks/Week 2/images/w2_p1_17.png)
-Connect the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Result's Text to</span> block to the <span style="background-color:#f3aa44;font-weight:bold;color:white">do</span> part of the <span style="background-color:#f3aa44;font-weight:bold;color:white">else</span> section. Replace "Label" with "Too high". Since we already checked when the guess is equal to or lower than the answer, the only possibility left is whether the guess is too high. There is no need to use the <span style="background-color:#45b4a9;font-weight:bold;color:white">comparison</span> block here, so we can simply add the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Result's Text to</span> block.
+Connect the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Result's Text to</span> block to the <span style="background-color:#f3aa44;font-weight:bold;color:white">else</span> section. Replace “Label” with “Too high”. Since we already checked when the guess is equal to or lower than the answer, the only possibility left is whether the guess is too high. There is no need to use the <span style="background-color:#45b4a9;font-weight:bold;color:white">comparison</span> block here, so we can simply add the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Result's Text to</span> block.
 ---
 
 # High Low - Part 1: Random Number Guesser
 ![Setup](./Weeks/Week 2/images/w2_checkpoint.png)
 <span style="font-weight:bold">[Checkpoint #3: Too High Logic]</span><br>
-Preview the app. See if the "Result" label indicates whether the guess is too high.<br>
+Preview the app. See if the “Result” label indicates whether the guess is too high.<br>
 If it works, now the “Result” label will indicate whether the guess is correct, too low, or too high, but there is only one possible answer which was pre-set to 50 in Step 5. The number should be randomly chosen so the user won’t know what the answer is every time.
 ---
 
@@ -184,17 +184,17 @@ The **Clue Giver** and **Guesser** will be using the same app to communicate wit
 
 # High Low - Part 2: Real-Time Updates
 ![Setup](./Weeks/Week 2/images/w2_p2_1.png)
-In a new project, add a text input for the two users to type in their message. We will rename it to "Text_Input".
+In a new project, add a text input for the two users to type in their message. We will rename it to “Text_Input”.
 ---
 
 # High Low - Part 2: Real-Time Updates
 ![Setup](./Weeks/Week 2/images/w2_p2_2.png)
-Add a button for users to submit their message. We will rename it to "Submit".
+Add a button for users to submit their message. We will rename it to “Submit”.
 ---
 
 # High Low - Part 2: Real-Time Updates
 ![Setup](./Weeks/Week 2/images/w2_p2_3.png)
-Add a label to display submitted messages. We will rename it to "Message".<br>
+Add a label to display submitted messages. We will rename it to “Message”.<br>
 **Now, we will move onto blocks.**
 ---
 
@@ -228,7 +228,7 @@ The <span style="background-color:#f87956;font-weight:bold;color:white">set vari
 
 # High Low - Part 2: Real-Time Updates
 ![Setup](./Weeks/Week 2/images/w2_p2_6.png)
-Connect the <span style="background-color:#f87956;font-weight:bold;color:white">set variable to</span> block to the <span style="background-color:#f3aa44;font-weight:bold;color:white">when Submit Click</span> block. We want the cloud variable <span style="background-color:#f7c9bd;font-weight:bold">text</span> to update when the "Submit" button is clicked.
+Connect the <span style="background-color:#f87956;font-weight:bold;color:white">set variable to</span> block to the <span style="background-color:#f3aa44;font-weight:bold;color:white">when Submit Click</span> block. We want the cloud variable <span style="background-color:#f7c9bd;font-weight:bold">text</span> to update when the “Submit” button is clicked.
 ---
 
 # High Low - Part 2: Real-Time Updates
