@@ -134,7 +134,7 @@
 
       .block-intro img {
         max-width: 100%;
-        max-height: 150px;
+        max-height: 300px;
         margin: 0.5rem 0;
         border-radius: 4px;
       }
@@ -221,6 +221,7 @@
       const lessonData = {
           "Week 2": "./Weeks/Week 2/w2_guide.md",
           "Week 4": "./Weeks/Week 4/w4_guide.md",
+          "Week 5": "./Weeks/Week 5/w5_guide.md",
           "Week 6": "./Weeks/Week 6/w6_guide.md",
       };
 
@@ -327,10 +328,17 @@
                   .replace(/\*\*(.*?)\*\*/g, "<b>$1</b>")
                   .replace(/`(.*?)`/g, '<code style="background:#eee;padding:2px 5px;border-radius:4px">$1</code>');
 
-                // Check if this is an ordered list item (starts with number and period)
+                // Check if this is a list item (ordered or unordered, with optional indent for sublists)
+                const indent = line.length - line.trimStart().length;
                 const listMatch = parsed.match(/^(\d+)\.\s+(.*)$/);
+                const letterMatch = parsed.match(/^([a-z])[.)]\s+(.*)$/);
+                const unorderedMatch = parsed.match(/^[-*]\s+(.*)$/);
                 if (listMatch) {
-                  parsed = `<li value="${listMatch[1]}">${listMatch[2]}</li>`;
+                  parsed = `<li data-indent="${indent}" value="${listMatch[1]}">${listMatch[2]}</li>`;
+                } else if (letterMatch) {
+                  parsed = `<li data-indent="${indent}" data-letter="true">${letterMatch[2]}</li>`;
+                } else if (unorderedMatch) {
+                  parsed = `<li data-indent="${indent}" data-ul="true">${unorderedMatch[1]}</li>`;
                 }
                 textLines.push(parsed);
               }
@@ -345,13 +353,55 @@
               blockDescription = descMatch;
             }
 
-            // Wrap consecutive <li> elements in <ol> tags
+            // Wrap consecutive <li> elements in nested <ol>/<ul> tags
             let textContent = textLines.join("<br>");
-            // Find sequences of <li>...</li><br><li>...</li> and wrap in <ol>
             textContent = textContent.replace(/(<li[^>]*>.*?<\/li>)(<br><li[^>]*>.*?<\/li>)*/g, function(match) {
-              // Remove <br> between list items
-              const cleanedList = match.replace(/<br>(?=<li)/g, '');
-              return '<ol>' + cleanedList + '</ol>';
+              const items = match.split('<br>').filter(s => s.trim());
+              let result = '';
+              let stack = []; // track open list tags and their indent levels
+
+              items.forEach(item => {
+                const indentMatch = item.match(/data-indent="(\d+)"/);
+                const isUl = item.includes('data-ul="true"');
+                const isLetter = item.includes('data-letter="true"');
+                const indent = indentMatch ? parseInt(indentMatch[1]) : 0;
+                const tag = isUl ? 'ul' : (isLetter ? 'ol type="a"' : 'ol');
+                const closeTag = isUl ? 'ul' : 'ol';
+                // Clean data attributes from the li
+                const cleanItem = item.replace(/\s*data-indent="\d+"/, '').replace(/\s*data-ul="true"/, '').replace(/\s*data-letter="true"/, '');
+
+                if (stack.length === 0) {
+                  result += `<${tag}>`;
+                  stack.push({ indent, closeTag });
+                } else {
+                  const top = stack[stack.length - 1];
+                  if (indent > top.indent) {
+                    // Open a nested list
+                    result += `<${tag}>`;
+                    stack.push({ indent, closeTag });
+                  } else {
+                    // Close lists until we reach the right level
+                    while (stack.length > 1 && stack[stack.length - 1].indent > indent) {
+                      const closed = stack.pop();
+                      result += `</${closed.closeTag}>`;
+                    }
+                    // If tag type changed at same level, close and reopen
+                    if (stack.length > 0 && stack[stack.length - 1].indent === indent && stack[stack.length - 1].closeTag !== closeTag) {
+                      const closed = stack.pop();
+                      result += `</${closed.closeTag}><${tag}>`;
+                      stack.push({ indent, closeTag });
+                    }
+                  }
+                }
+                result += cleanItem;
+              });
+
+              // Close all remaining open tags
+              while (stack.length > 0) {
+                const closed = stack.pop();
+                result += `</${closed.closeTag}>`;
+              }
+              return result;
             });
 
             return {
