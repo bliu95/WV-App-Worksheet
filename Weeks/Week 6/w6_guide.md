@@ -27,7 +27,7 @@ We are setting up to create a scrollable label using this layout.
 Add a label inside the layout to display the response from the LLM. We will rename it to “Response”. Now, do the following:
 1. Change the **Width** and **Height** of the label to “Fill container”. We want the label to fit within the layout.
 2. Clear the default text “Label” so the label is blank before the LLM returns a response.
-**After adding the components, let's move on to the Blocks tab.**
+**Now, we will move onto blocks.**
 ---
 
 # Historical Figures
@@ -51,12 +51,12 @@ Now, we want to add functionality to the button we added for the user to submit 
 
 # Historical Figures
 ![Setup](./Weeks/Week 6/images/w6_7.png)
-Connect the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Response's Text to</span> block to the <span style="background-color:#f3aa44;font-weight:bold;color:white">when Submit Prompt Click</span> block. We want the “Response” text input to update when the “Submit Prompt” button is clicked.
+Connect the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Response's Text to</span> block to the <span style="background-color:#f3aa44;font-weight:bold;color:white">when Submit Prompt Click</span> block. We want the “Response” label to update when the “Submit Prompt” button is clicked.
 ---
 
 # Historical Figures
 ![Setup](./Weeks/Week 6/images/w6_8.png)
-Connect the <span style="background-color:#735ca5;font-weight:bold;color:white">call Open AI's Text Complete</span> block to the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Response's Text to</span> block. We want the response from the LLM to be displayed in the “Response” text input.
+Connect the <span style="background-color:#735ca5;font-weight:bold;color:white">call Open AI's Text Complete</span> block to the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Response's Text to</span> block. We want the response from the LLM to be displayed in the “Response” label.
 ---
 
 # Historical Figures
@@ -68,14 +68,14 @@ Connect the <span style="background-color:#70ce9c;font-weight:bold;color:white">
 ![Setup](./Weeks/Week 6/images/w6_checkpoint.png)
 <span style="font-weight:bold">[Checkpoint #1: Basic LLM Response]</span><br>
 Preview the app. Check that the LLM produces a response to the text submitted by the user. You may need to wait a few seconds before there is a response. If there is an error message, you may need to speak with your teacher to figure out the issue.<br>
-If it works, the “Response” text input should display a response to the text submitted by the user. Next, we want the LLM to communicate as a historical figure.<br>
+If it works, the “Response” label should display a response to the text submitted by the user. Next, we want the LLM to communicate as a historical figure.<br>
 **Let's move to the Design tab.**
 ---
 
 # Historical Figures
 ![Setup](./Weeks/Week 6/images/w6_11.png)
 Add a label to display the name of the historical figure. We will rename it to “Historical Figure”. In the properties panel, replace the default value “Label” with “Shakespeare”.<br>
-**Let's move back to the Blocks tab.**
+**Now, we will move onto blocks.**
 ---
 
 # Historical Figures
@@ -106,7 +106,7 @@ This makes it so that the LLM will respond to the message as Shakespeare.
 ![Setup](./Weeks/Week 6/images/w6_checkpoint.png)
 <span style="font-weight:bold">[Checkpoint #2: Respond as Shakespeare]</span><br>
 Preview the app. Check that the LLM produces a response to the text submitted by the user as Shakespeare. Again, you may need to wait a few seconds before there is a response.<br>
-If it works, the “Response” text input should display a response to the text submitted by the user as Shakespeare. Next, we want the LLM to communicate as a historical figure of the user's choice.<br>
+If it works, the “Response” label should display a response to the text submitted by the user as Shakespeare. Next, we want the LLM to communicate as a historical figure of the user's choice.<br>
 **Let's move to the Design tab.**
 ---
 
@@ -128,7 +128,7 @@ Now, we want to add functionality to the button we added for the user to submit 
 
 # Historical Figures
 ![Setup](./Weeks/Week 6/images/w6_18.png)
-Connect the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Historical Figure's Text to</span> block to the <span style="background-color:#f3aa44;font-weight:bold;color:white">when Submit Name Click</span> block. We want the “Historical Figure” text input to update when the user submits the name of a historical figure.
+Connect the <span style="background-color:#3f9e83;font-weight:bold;color:white">set Historical Figure's Text to</span> block to the <span style="background-color:#f3aa44;font-weight:bold;color:white">when Submit Name Click</span> block. We want the “Historical Figure” label to update when the user submits the name of a historical figure.
 ---
 
 # Historical Figures
