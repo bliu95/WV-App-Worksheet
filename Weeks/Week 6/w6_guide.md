@@ -1,6 +1,6 @@
 # Historical Figures
 Your goal is to create an app where users can communicate with a “historical figure” through LLMs. Users should be able to send a message and get a response from the LLM.<br>
-You will receive the link to the project template from your teacher. The project is completely empty besides a block that you will use to access the LLM.
+Begin your project by duplicating this [project template](https://x.thunkable.com/projects/697bfe9356673573f9be93cf/aec9c6b9-bb97-412c-8b67-02bbfdb6e014/designer). The project is completely empty besides a block that you will use to access the LLM. If you experience any issues with accessing or duplicating the template, please speak with your teacher.
 ---
 
 # Historical Figures
