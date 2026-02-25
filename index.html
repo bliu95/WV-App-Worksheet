@@ -326,7 +326,8 @@
                 }
                 let parsed = trimmed
                   .replace(/\*\*(.*?)\*\*/g, "<b>$1</b>")
-                  .replace(/`(.*?)`/g, '<code style="background:#eee;padding:2px 5px;border-radius:4px">$1</code>');
+                  .replace(/`(.*?)`/g, '<code style="background:#eee;padding:2px 5px;border-radius:4px">$1</code>')
+                  .replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, '<a href="$2" target="_blank">$1</a>');
 
                 // Check if this is a list item (ordered or unordered, with optional indent for sublists)
                 const indent = line.length - line.trimStart().length;
