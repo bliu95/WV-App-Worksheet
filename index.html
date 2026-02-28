@@ -223,6 +223,7 @@
           "Week 4": "./Weeks/Week 4/w4_guide.md",
           "Week 5": "./Weeks/Week 5/w5_guide.md",
           "Week 6": "./Weeks/Week 6/w6_guide.md",
+          "Week 7": "./Weeks/Week 7/w7_guide.md",
       };
 
       // Initialize
@@ -318,7 +319,7 @@
                   checkpointName = checkpointMatch[1].replace(/<[^>]*>/g, '').trim();
                 }
                 // Check for block introduction marker
-                const blockMatch = trimmed.match(/font-weight:bold[^>]*>Block:<\/span>\s*(<span[^>]*>([^<]*)<\/span>)/i);
+                const blockMatch = trimmed.match(/font-weight:bold[^>]*>Block:<\/span>\s*(<span[^>]*>([^<]*)<\/span>[^<]*)/i);
                 if (blockMatch) {
                   isBlockIntro = true;
                   blockNameStyled = blockMatch[1].trim();  // Preserve styled HTML span
