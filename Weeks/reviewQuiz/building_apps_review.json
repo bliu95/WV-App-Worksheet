@@ -1,0 +1,195 @@
+{
+  "title": "Building Simple Apps in Thunkable — Review Quiz",
+  "questions": [
+    {
+      "question": "Which component would you use to let a user type a search query into your app?",
+      "answers": [
+        "Label",
+        "Button",
+        "Image",
+        "Text Input"
+      ],
+      "correct": 3
+    },
+    {
+      "question": "A student wants to display a welcome message that the user cannot edit. Which component should they use?",
+      "answers": [
+        "Text Input",
+        "Image",
+        "Label",
+        "Button"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "Which component would you use to display a profile picture in your app?",
+      "answers": [
+        "Label",
+        "Text Input",
+        "Button",
+        "Image"
+      ],
+      "correct": 3
+    },
+    {
+      "question": "Which of the following is something a Button can do in Thunkable?",
+      "answers": [
+        "Display read-only text on the screen",
+        "Store data between sessions",
+        "Trigger the device's camera to take a photo",
+        "Translate text into another language"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "A developer needs the user to enter their email address into the app. Which component should they use?",
+      "answers": [
+        "Button",
+        "Label",
+        "Image",
+        "Text Input"
+      ],
+      "correct": 3
+    },
+    {
+      "question": "Under which section in the blocks toolbox can you find the Speech and Camera blocks?",
+      "answers": [
+        "Basic Components",
+        "Variables",
+        "App Features",
+        "Design"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "A developer adds a Label, a Button, a Text Input, and an Image to their screen. Which component will the user be able to type into?",
+      "answers": [
+        "Label",
+        "Button",
+        "Text Input",
+        "Image"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "What does the `say` block need in order to work?",
+      "answers": [
+        "An image and a language",
+        "A piece of text and a language to speak it in",
+        "An audio file and a volume level",
+        "A URL and a language code"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "What type of output does the `recognized speech` block produce?",
+      "answers": [
+        "An audio file",
+        "A translated sentence",
+        "A text transcription of what was spoken",
+        "A photo of the speaker"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "What does the `translation` block do?",
+      "answers": [
+        "It reads text aloud in a selected language",
+        "It converts speech into text",
+        "It converts text from one language to another",
+        "It changes the language of the entire app interface"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "You want your app to listen to a user speak in French and then display the French words as text on the screen. Which block and component do you need?",
+      "answers": [
+        "`say` block and a Label",
+        "`recognized speech` block (set to French) and a Label",
+        "`translation` block and a Text Input",
+        "`photo from camera` block and an Image"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "You want to build an app where the user types a word in English and hears it spoken aloud in English. Which block do you need?",
+      "answers": [
+        "`recognized speech`",
+        "`translation`",
+        "`say`",
+        "`description of image from`"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "You are building an app where a user speaks a sentence in English, the app converts it to text, translates that text to German, and then displays the German text on screen. Which blocks and components do you need?",
+      "answers": [
+        "`recognized speech`, `translation`, and a Label",
+        "`say`, `translation`, and a Text Input",
+        "`recognized speech`, `say`, and a Label",
+        "`photo from camera`, `translation`, and a Label"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "What happens when the `photo from camera` block runs?",
+      "answers": [
+        "It saves a photo to the device's gallery",
+        "It opens the device's camera so the user can take a photo",
+        "It downloads an image from the internet",
+        "It displays a previously saved image"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "What kind of input does the `description of image from` block need?",
+      "answers": [
+        "A text description typed by the user",
+        "An image (such as one from the `photo from camera` block)",
+        "A URL to a website",
+        "An audio recording"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "You want to build an app that takes a photo and then displays a written description of what is in the photo on the screen. Which blocks and components do you need?",
+      "answers": [
+        "`photo from camera`, `description of image from`, and a Label",
+        "`photo from camera`, `say`, and a Label",
+        "`recognized speech`, `description of image from`, and a Label",
+        "`photo from camera`, `translation`, and an Image"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "You are building an accessibility app. The user takes a photo of an object, the app identifies the object, and reads the description aloud. Which blocks do you need?",
+      "answers": [
+        "`photo from camera`, `translation`, and `say`",
+        "`photo from camera`, `recognized speech`, and `say`",
+        "`photo from camera`, `description of image from`, and `say`",
+        "`recognized speech`, `description of image from`, and `say`"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "You are building a voice-powered translator. The user taps a button, speaks a sentence in English, the app translates it to Korean, and displays the Korean text on screen. Which components and blocks do you need?",
+      "answers": [
+        "Button, Label, `recognized speech`, and `translation`",
+        "Button, Text Input, `say`, and `translation`",
+        "Button, Label, `photo from camera`, and `translation`",
+        "Button, Image, `recognized speech`, and `say`"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "You are building a travel assistant app. The user takes a photo of a street sign, the app identifies the text on the sign, translates it from Spanish to English, and speaks the English translation aloud. Which blocks do you need?",
+      "answers": [
+        "`photo from camera`, `recognized speech`, `translation`, and `say`",
+        "`photo from camera`, `description of image from`, `translation`, and `say`",
+        "`recognized speech`, `description of image from`, and `translation`",
+        "`photo from camera`, `description of image from`, and `recognized speech`"
+      ],
+      "correct": 1
+    }
+  ]
+}

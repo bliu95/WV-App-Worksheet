@@ -1,0 +1,205 @@
+{
+  "title": "Filters in Thunkable — Review Quiz",
+  "questions": [
+    {
+      "question": "You create a Filter View with the rule: Speed > 60. Which animals are returned?",
+      "answers": [
+        "Falcon, Tiger, Eagle, Cheetah",
+        "Falcon, Eagle, Cheetah",
+        "Falcon, Tiger, Eagle, Cheetah, Dolphin",
+        "Tiger, Eagle, Cheetah"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "You create a Filter View with the rule: Type = Bird. How many rows are returned?",
+      "answers": [
+        "2",
+        "3",
+        "4",
+        "1"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "You create a Filter View with the rule: Weight < 10. Which animals are returned?",
+      "answers": [
+        "Falcon, Parrot",
+        "Falcon, Eagle, Parrot",
+        "Falcon, Eagle",
+        "Parrot only"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "You create a Filter View with the rule: Speed = 55. Which animal is returned?",
+      "answers": [
+        "Tiger",
+        "Dolphin",
+        "Wolf",
+        "Shark"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "You create a Filter View with two rules: Type = Mammal AND Speed > 60. Which animals are returned?",
+      "answers": [
+        "Tiger, Cheetah, Wolf",
+        "Tiger, Cheetah",
+        "Cheetah only",
+        "Tiger only"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "You create a Filter View with the rule: Weight > 100. Which animals are returned?",
+      "answers": [
+        "Tiger, Shark, Dolphin",
+        "Tiger, Shark",
+        "Shark, Dolphin",
+        "Tiger, Shark, Cheetah, Dolphin"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "You create a Filter View with two rules: Type = Bird AND Speed > 50. Which animals are returned?",
+      "answers": [
+        "Falcon, Eagle, Parrot",
+        "Falcon, Eagle",
+        "Eagle only",
+        "Falcon only"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "You create a Filter View with two rules: Weight > 5 AND Weight < 100. Which animals are returned?",
+      "answers": [
+        "Eagle, Cheetah, Wolf",
+        "Falcon, Eagle, Cheetah, Wolf",
+        "Eagle, Wolf",
+        "Eagle, Cheetah"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "You create a Filter View with two rules: Type = Fish AND Speed > 50. Which animals are returned?",
+      "answers": [
+        "Shark, Dolphin",
+        "Dolphin only",
+        "Shark only",
+        "No rows returned"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "You create a Filter View with the rule: Speed > 80. Then you use the `update filter for` block to change the value to 50. Which animals does the Data Viewer now show?",
+      "answers": [
+        "Falcon, Eagle, Cheetah",
+        "Falcon, Tiger, Eagle, Cheetah, Dolphin, Wolf",
+        "Falcon, Tiger, Eagle, Cheetah, Dolphin",
+        "Tiger, Eagle, Cheetah, Dolphin, Wolf"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "You create a Filter View with the rule: Rating > 3. Which apps are returned?",
+      "answers": [
+        "Snap, Beats, Doodle, Frenzy, Gist",
+        "Snap, Beats, Clix, Doodle, Frenzy, Gist",
+        "Beats, Doodle, Frenzy",
+        "Snap, Doodle, Gist"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "You create a Filter View with the rule: Category = Games. How many rows are returned?",
+      "answers": [
+        "2",
+        "3",
+        "4",
+        "1"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "You create a Filter View with the rule: Downloads < 4000. Which apps are returned?",
+      "answers": [
+        "Beats, Echo",
+        "Snap, Beats, Echo",
+        "Echo only",
+        "Beats, Echo, Gist"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "You create a Filter View with the rule: Developer = Aria. Which apps are returned?",
+      "answers": [
+        "Snap, Clix",
+        "Snap, Clix, Gist",
+        "Snap, Gist",
+        "Clix, Gist"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "You create a Filter View with two rules: Category = Social AND Rating > 3. Which apps are returned?",
+      "answers": [
+        "Snap, Clix, Gist",
+        "Snap, Gist",
+        "Gist only",
+        "Snap only"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "You create a Filter View with the rule: Downloads = 6000. Which app is returned?",
+      "answers": [
+        "Snap",
+        "Frenzy",
+        "Hype",
+        "Doodle"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "You create a Filter View with two rules: Developer = Blake AND Rating > 3. Which apps are returned?",
+      "answers": [
+        "Beats, Echo, Hype",
+        "Beats only",
+        "Beats, Hype",
+        "Echo, Hype"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "You create a Filter View with two rules: Downloads > 4000 AND Downloads < 10000. Which apps are returned?",
+      "answers": [
+        "Snap, Clix, Frenzy, Hype",
+        "Snap, Clix, Hype",
+        "Snap, Clix, Frenzy, Gist, Hype",
+        "Clix, Frenzy, Hype"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "You create a Filter View with the rule Downloads > 8000. Then you use the `update filter for` block to change the value to 5000. Which apps does the Data Viewer now show?",
+      "answers": [
+        "Clix, Doodle, Frenzy",
+        "Clix, Doodle, Frenzy, Hype",
+        "Snap, Clix, Doodle, Frenzy, Hype",
+        "Doodle, Frenzy"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "You create a Filter View with two rules: Category = Games AND Rating = 5. Which apps are returned?",
+      "answers": [
+        "Doodle, Frenzy, Hype",
+        "Frenzy only",
+        "Beats, Frenzy",
+        "Doodle, Frenzy"
+      ],
+      "correct": 1
+    }
+  ]
+}

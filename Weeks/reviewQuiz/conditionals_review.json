@@ -1,0 +1,185 @@
+{
+  "title": "Conditionals in Thunkable — Review Quiz",
+  "questions": [
+    {
+      "question": "What does conditional logic check in an app?",
+      "answers": [
+        "How many screens the app has",
+        "Whether a statement is true or false",
+        "How fast the app loads",
+        "How much storage the app uses"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "In an `if` block, what happens if the condition is false and there is no `else` section?",
+      "answers": [
+        "The app crashes",
+        "The blocks inside `do` still run",
+        "Nothing happens — the block is skipped",
+        "The condition is automatically changed to true"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "What does the `do` section of an `if` block contain?",
+      "answers": [
+        "The condition to evaluate",
+        "The blocks that run when the condition is true",
+        "The blocks that run when the condition is false",
+        "The name of the variable being checked"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "In an `if-else` block, when does the `else` section execute?",
+      "answers": [
+        "At the same time as the `do` section",
+        "Only when the condition is true",
+        "Only when the condition is false",
+        "Every time the block runs, regardless of the condition"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "A user enters their age into an app. If the age is 18 or older, access is granted. If the age is under 18, access is restricted. Which block structure best fits this scenario?",
+      "answers": [
+        "An `if` block only",
+        "An `if-else` block",
+        "An `else if` block only",
+        "An `or` block"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "What is the best way to think about an `if-else` block?",
+      "answers": [
+        "\"Do this, then do that\"",
+        "\"If this is true, do this. Otherwise, do this instead\"",
+        "\"Repeat this until it is false\"",
+        "\"Store this value, then check it later\""
+      ],
+      "correct": 1
+    },
+    {
+      "question": "When does the `else if` section of a condition block run?",
+      "answers": [
+        "When the first `if` condition is true",
+        "Only when the first `if` condition is false, and then it checks its own condition",
+        "After both the `do` and `else` sections have run",
+        "It always runs no matter what"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "An app checks a student's grade. If the grade is 90 or above, it shows \"A\". If the grade is 80 or above, it shows \"B\". Otherwise, it shows \"Try again.\" Which block structure should you use?",
+      "answers": [
+        "Two separate `if` blocks",
+        "An `if` block with `else if` and `else`",
+        "An `and` block",
+        "An `or` block"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "What does the `and` block do in Thunkable?",
+      "answers": [
+        "It checks if at least one statement is true",
+        "It checks if all statements are true",
+        "It runs two actions at the same time",
+        "It combines two variables into one"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "What does the `or` block do in Thunkable?",
+      "answers": [
+        "It checks if all statements are true",
+        "It checks if at least one statement is true",
+        "It combines two lists together",
+        "It switches between two screens"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "Which logic block would you use to check that a user has filled in their name OR their email (at least one of the two)?",
+      "answers": [
+        "`and` block",
+        "`or` block",
+        "`if` block by itself",
+        "`else if` block"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "Which logic block would you use to verify that a user has agreed to the terms of service AND is at least 13 years old?",
+      "answers": [
+        "`or` block",
+        "`else if` block",
+        "`and` block",
+        "`if` block by itself"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "Using an `and` block, if Input 1 is True and Input 2 is True, what is the output?",
+      "answers": [
+        "True",
+        "False",
+        "Null",
+        "Error"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "Using an `and` block, if Input 1 is False and Input 2 is False, what is the output?",
+      "answers": [
+        "True",
+        "False",
+        "Null",
+        "Error"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "Using an `or` block, if Input 1 is False and Input 2 is True, what is the output?",
+      "answers": [
+        "True",
+        "False",
+        "Null",
+        "Error"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "Using an `or` block, if Input 1 is False and Input 2 is False, what is the output?",
+      "answers": [
+        "True",
+        "False",
+        "Null",
+        "Error"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "A login screen checks two conditions: the username matches AND the password matches. Both are true. What happens?",
+      "answers": [
+        "An error message is shown",
+        "The user is logged in",
+        "The app asks the user to try again",
+        "Nothing happens"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "A login screen checks two conditions using an `and` block: the username matches AND the password matches. The username is correct but the password is wrong. What is the result of the `and` block?",
+      "answers": [
+        "True — because the username is correct",
+        "False — because both conditions must be true",
+        "True — because at least one condition is true",
+        "Error — because the inputs don't match"
+      ],
+      "correct": 1
+    }
+  ]
+}
