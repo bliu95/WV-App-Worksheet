@@ -1,0 +1,205 @@
+{
+  "title": "Variables in Thunkable — Review Quiz",
+  "questions": [
+    {
+      "question": "What is the best description of a variable in Thunkable?",
+      "answers": [
+        "A component that displays text",
+        "A container that stores a piece of information like a number or text",
+        "A block that connects two screens",
+        "A setting that controls the app's appearance"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "Which of the following can a variable store?",
+      "answers": [
+        "Only images",
+        "Only text",
+        "Information such as numbers or text",
+        "Only true or false values"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "If you set a variable to the value 10 and then set it to 25, what value does the variable hold?",
+      "answers": [
+        "10",
+        "25",
+        "35",
+        "Both 10 and 25"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "Which of the following is NOT a type of variable in Thunkable?",
+      "answers": [
+        "App",
+        "Stored",
+        "Cloud",
+        "Global"
+      ],
+      "correct": 3
+    },
+    {
+      "question": "Why are variables useful in a Thunkable app?",
+      "answers": [
+        "They make the app download faster",
+        "They let the app work with data, enabling features like tracking user interactions",
+        "They add animations to the screen",
+        "They create new components automatically"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "Where does an App variable store its data?",
+      "answers": [
+        "On the device's hard drive permanently",
+        "In the cloud",
+        "In the app's memory during the current session",
+        "On a remote server"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "A user is playing a game and has a score of 50 stored in an App variable. They close and reopen the app. What is the score now?",
+      "answers": [
+        "50",
+        "0 or whatever the initial value was — the data is reset",
+        "100",
+        "The app will crash because the data was lost"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "Which variable type is the one you will use most often in Thunkable?",
+      "answers": [
+        "Stored variable",
+        "Cloud variable",
+        "App variable",
+        "They are all used equally"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "Which of the following is a good use case for an App variable?",
+      "answers": [
+        "Saving a user's theme preference so it loads next time",
+        "Tracking which page of a slideshow the user is currently viewing",
+        "Syncing a shopping list across a phone and a tablet",
+        "Storing a username so the user stays logged in after closing the app"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "What makes Stored variables different from App variables?",
+      "answers": [
+        "Stored variables can only hold numbers",
+        "Stored variables save data on the device between app sessions",
+        "Stored variables are shared across multiple devices",
+        "Stored variables are deleted when the app is closed"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "A fitness app needs to remember a user's daily step goal so it is still set the next time they open the app on the same phone. Which variable type should be used?",
+      "answers": [
+        "App variable",
+        "Stored variable",
+        "Cloud variable",
+        "No variable is needed"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "Which of the following is NOT a good use case for a Stored variable?",
+      "answers": [
+        "Saving the user's preferred language",
+        "Remembering a \"dark mode\" setting between sessions",
+        "Sharing a document with users on other devices",
+        "Keeping a user logged in after restarting the app"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "Where does a Cloud variable store its data?",
+      "answers": [
+        "In the app's temporary memory",
+        "On the user's device only",
+        "In the cloud, accessible from multiple devices",
+        "In a local file on the phone"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "What is the main advantage of a Cloud variable compared to the other variable types?",
+      "answers": [
+        "It is faster than other variables",
+        "It uses less memory",
+        "Its data can be accessed from multiple devices and by multiple users",
+        "It never loses its value"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "A team collaboration app allows multiple users to edit a shared task list from different phones. Which variable type should store the task list?",
+      "answers": [
+        "App variable",
+        "Stored variable",
+        "Cloud variable",
+        "Any variable type would work"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "Which of the following is a good example of using a Cloud variable?",
+      "answers": [
+        "Counting how many times a button is tapped in one session",
+        "Saving a user's nickname on their own device",
+        "A live chat feature where messages appear on all users' devices",
+        "Storing the current screen the user is viewing"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "A student is building a timer app. The timer counts down from 60 seconds during one session and does not need to be saved. Which variable type is best?",
+      "answers": [
+        "Cloud variable",
+        "Stored variable",
+        "App variable",
+        "No variable is needed"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "A developer wants to save a user's favorite recipes so they are still available after the app is closed, but only on the same device. Which variable type should they use?",
+      "answers": [
+        "App variable",
+        "Stored variable",
+        "Cloud variable",
+        "None — variables cannot store recipes"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "A classroom polling app needs to collect and display live votes from 30 students on different devices in real time. Which variable type is best?",
+      "answers": [
+        "App variable",
+        "Stored variable",
+        "Cloud variable",
+        "App variable on each device"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "Which of the following statements about Thunkable variables is FALSE?",
+      "answers": [
+        "Cloud variables allow data to be accessed from multiple devices",
+        "Stored variables save data on the device between sessions",
+        "App variables persist their data after the app is closed and reopened",
+        "A variable can hold only one value at a time"
+      ],
+      "correct": 2
+    }
+  ]
+}

@@ -174,22 +174,183 @@
         border: 1px solid #ccc;
         font-size: 0.9rem;
       }
+
+      /* Week Picker Landing Page */
+      .week-picker {
+        padding: 2rem;
+        text-align: center;
+      }
+
+      .week-picker h1 {
+        margin: 0 0 0.5rem 0;
+        color: #202124;
+        font-size: 1.6rem;
+      }
+
+      .week-picker h1 + .week-grid + h1 {
+        margin-top: 2rem;
+      }
+
+      .week-picker p {
+        color: #5f6368;
+        margin: 0 0 1.5rem 0;
+      }
+
+      .week-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 12px;
+      }
+
+      .week-btn {
+        padding: 16px 12px;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 600;
+      }
+
+      .week-btn-sub {
+        font-size: 0.8rem;
+        font-weight: 400;
+        opacity: 0.85;
+      }
+
+      .back-btn {
+        background: none;
+        color: #1a73e8;
+        border: none;
+        padding: 4px 8px;
+        font-size: 0.85rem;
+        cursor: pointer;
+        font-weight: 500;
+      }
+
+      .back-btn:hover {
+        background: #e8f0fe;
+        border-radius: 4px;
+      }
+
+      /* Quiz styles */
+      .quiz-header {
+        padding: 1rem 1.5rem;
+        border-bottom: 1px solid #eee;
+        background: #fff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .quiz-question {
+        padding: 2rem;
+        color: #3c4043;
+        line-height: 1.6;
+        font-size: 1.15rem;
+        font-weight: 500;
+      }
+
+      .quiz-answers {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 0 2rem 2rem;
+      }
+
+      .quiz-answer {
+        width: 100%;
+        text-align: left;
+        padding: 14px 18px;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 500;
+        background-color: #f0f2f5;
+        color: #202124;
+        border: 2px solid transparent;
+        transition: background 0.2s, border-color 0.2s;
+      }
+
+      .quiz-answer:hover:not(:disabled) {
+        background-color: #e3f2fd;
+        border-color: #1a73e8;
+      }
+
+      .quiz-answer:disabled {
+        cursor: not-allowed;
+        opacity: 0.7;
+      }
+
+      .quiz-answer.correct {
+        background-color: #e6f4ea;
+        border-color: #34a853;
+        color: #1e7e34;
+      }
+
+      .quiz-answer.wrong {
+        background-color: #fce8e6;
+        border-color: #ea4335;
+        color: #c5221f;
+      }
+
+      .quiz-complete {
+        padding: 3rem 2rem;
+        text-align: center;
+        color: #202124;
+      }
+
+      .quiz-complete h2 {
+        font-size: 1.6rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .quiz-complete p {
+        color: #5f6368;
+        margin-bottom: 1.5rem;
+      }
+
     </style>
   </head>
   <body>
     <div class="card">
       
+      <!-- Week Picker Landing Page -->
+      <div id="week-picker" class="week-picker">
+        <h1>Activities</h1>
+        <div id="week-grid" class="week-grid"></div>
+        <h1 style="margin-top: 60px;">Quiz Review</h1>
+        <div id="quiz-grid" class="week-grid"></div>
+      </div>
+
+      <!-- Quiz View -->
+      <div id="quiz-content" style="display: none;">
+        <div class="quiz-header">
+          <div class="header-left">
+            <div id="quiz-badge" class="step-badge">Question 1 of 10</div>
+            <h2 id="quiz-title">Quiz</h2>
+          </div>
+          <div class="header-right">
+            <button class="back-btn" onclick="showWeekPicker()">All Activities</button>
+          </div>
+        </div>
+        <div id="quiz-question" class="quiz-question"></div>
+        <div id="quiz-answers" class="quiz-answers"></div>
+        <div id="quiz-controls" class="controls" style="display: none;">
+          <div></div>
+          <button id="quiz-next-btn" onclick="nextQuizQuestion()">Next</button>
+        </div>
+      </div>
+
       <div id="loading-msg" class="loading-state">
         Loading...
       </div>
 
-      <div id="main-content">
+      <div id="main-content" style="display: none;">
         <div class="header-section">
           <div class="header-left">
             <div id="step-badge" class="step-badge">Step 1</div>
             <h2 id="step-title">Welcome</h2>
           </div>
           <div class="header-right">
+            <button class="back-btn" onclick="showWeekPicker()">All Weeks</button>
             <select id="week-select" onchange="handleWeekChange()"></select>
             <select id="section-select" onchange="handleSectionChange()"></select>
           </div>
@@ -218,6 +379,18 @@
       let currentSection = 0;   // Currently selected section index
       let currentStepInSection = 0;  // Current step within the section
 
+      const quizData = {
+          "Building Apps": "./Weeks/reviewQuiz/building_apps_review.json",
+          "Conditionals": "./Weeks/reviewQuiz/conditionals_review.json",
+          "Variables": "./Weeks/reviewQuiz/variables_review.json",
+          "Lists & Objects": "./Weeks/reviewQuiz/lists_objects_review.json",
+          "Filters": "./Weeks/reviewQuiz/filters_review.json",
+      };
+
+      let quizQuestions = [];
+      let currentQuizIndex = 0;
+      let quizAnswered = false;
+
       const lessonData = {
           "Week 2": "./Weeks/Week 2/w2_guide.md",
           "Week 4": "./Weeks/Week 4/w4_guide.md",
@@ -228,25 +401,126 @@
           "Week 10": "./Weeks/Week 10/w10_guide.md",
       };
 
+      const lessonNames = {
+          "Week 2": "High Low",
+          "Week 4": "Quiz App",
+          "Week 5": "Data Filtering App",
+          "Week 6": "Historical Figures",
+          "Week 7": "Fake Voices App",
+          "Week 8": "AI Story App",
+          "Week 10": "High Low with Alerts",
+      };
+
+      // Convert "Week 2" -> "week2", "Week 10" -> "week10"
+      function weekToSlug(week) {
+          return week.toLowerCase().replace(/\s+/g, '');
+      }
+
+      // Convert "week2" -> "Week 2", "week10" -> "Week 10"
+      function slugToWeek(slug) {
+          return Object.keys(lessonData).find(w => weekToSlug(w) === slug) || null;
+      }
+
       // Initialize
       function init() {
           const weekSelect = document.getElementById('week-select');
+          const weekGrid = document.getElementById('week-grid');
 
-          // Populate the Week Dropdown
+          // Populate the Week Dropdown and Week Picker grid
           Object.keys(lessonData).forEach(week => {
               const option = document.createElement('option');
               option.value = week;
               option.textContent = week;
               weekSelect.appendChild(option);
+
+              const btn = document.createElement('button');
+              btn.className = 'week-btn';
+              const name = lessonNames[week] || week;
+              const weekNum = week.replace('Week ', '');
+              btn.innerHTML = name + '<br><span class="week-btn-sub">(Week ' + weekNum + ')</span>';
+              btn.onclick = () => selectWeek(week);
+              weekGrid.appendChild(btn);
           });
 
-          // Load the first week
-          handleWeekChange();
+          // Populate quiz grid
+          const quizGrid = document.getElementById('quiz-grid');
+          Object.keys(quizData).forEach(name => {
+              const btn = document.createElement('button');
+              btn.className = 'week-btn';
+              btn.textContent = name;
+              btn.onclick = () => selectQuiz(name);
+              quizGrid.appendChild(btn);
+          });
+
+          // Check URL hash for a direct week link
+          handleHashChange();
       }
+
+      function selectWeek(week) {
+          window.location.hash = weekToSlug(week);
+      }
+
+      // Quiz slug helpers: "Building Apps" -> "quiz-buildingapps"
+      function quizToSlug(name) {
+          return 'quiz-' + name.toLowerCase().replace(/[^a-z0-9]/g, '');
+      }
+
+      function slugToQuiz(slug) {
+          return Object.keys(quizData).find(n => quizToSlug(n) === slug) || null;
+      }
+
+      function selectQuiz(name) {
+          window.location.hash = quizToSlug(name);
+      }
+
+      function showWeekPicker() {
+          history.pushState(null, '', window.location.pathname);
+          document.getElementById('main-content').style.display = 'none';
+          document.getElementById('quiz-content').style.display = 'none';
+          document.getElementById('week-picker').style.display = '';
+      }
+
+      function handleHashChange() {
+          const hash = window.location.hash.slice(1); // remove '#'
+          if (hash) {
+              // Check for quiz hash
+              if (hash.startsWith('quiz-')) {
+                  const quizName = slugToQuiz(hash);
+                  if (quizName) {
+                      document.getElementById('week-picker').style.display = 'none';
+                      document.getElementById('main-content').style.display = 'none';
+                      document.getElementById('quiz-content').style.display = '';
+                      loadQuiz(quizName);
+                      return;
+                  }
+              }
+              const week = slugToWeek(hash);
+              if (week) {
+                  document.getElementById('week-select').value = week;
+                  document.getElementById('week-picker').style.display = 'none';
+                  document.getElementById('quiz-content').style.display = 'none';
+                  document.getElementById('main-content').style.display = '';
+                  handleWeekChange();
+                  return;
+              }
+          }
+          // No valid hash — show the picker
+          document.getElementById('main-content').style.display = 'none';
+          document.getElementById('quiz-content').style.display = 'none';
+          document.getElementById('week-picker').style.display = '';
+      }
+
+      window.addEventListener('hashchange', handleHashChange);
 
       function handleWeekChange() {
           const weekSelect = document.getElementById('week-select');
           const selectedWeek = weekSelect.value;
+          // Keep hash in sync when changing via dropdown
+          const currentSlug = window.location.hash.slice(1);
+          if (weekToSlug(selectedWeek) !== currentSlug) {
+              window.location.hash = weekToSlug(selectedWeek);
+              return; // hashchange handler will call handleWeekChange again
+          }
           const filename = lessonData[selectedWeek];
           loadMarkdownFile(filename);
       }
@@ -584,6 +858,82 @@
           document.getElementById('section-select').value = currentSection;
           renderStep();
         }
+      }
+
+      // Quiz logic
+      function loadQuiz(name) {
+          const url = quizData[name];
+          fetch(url)
+            .then(res => {
+              if (!res.ok) throw new Error("Could not load quiz: " + name);
+              return res.json();
+            })
+            .then(data => {
+              quizQuestions = data.questions;
+              currentQuizIndex = 0;
+              quizAnswered = false;
+              document.getElementById('quiz-title').textContent = data.title || name;
+              renderQuizQuestion();
+            })
+            .catch(err => {
+              document.getElementById('quiz-question').textContent = 'Error: ' + err.message;
+              document.getElementById('quiz-answers').innerHTML = '';
+              console.error(err);
+            });
+      }
+
+      function renderQuizQuestion() {
+          if (currentQuizIndex >= quizQuestions.length) {
+              // Quiz complete
+              document.getElementById('quiz-badge').textContent = 'Complete';
+              document.getElementById('quiz-controls').style.display = 'none';
+              document.getElementById('quiz-question').innerHTML = '';
+              document.getElementById('quiz-answers').innerHTML =
+                '<div class="quiz-complete">' +
+                  '<h2>Quiz Complete!</h2>' +
+                  '<p>You answered all ' + quizQuestions.length + ' questions correctly.</p>' +
+                  '<button onclick="showWeekPicker()">Back to Activities</button>' +
+                '</div>';
+              return;
+          }
+
+          const q = quizQuestions[currentQuizIndex];
+          quizAnswered = false;
+          document.getElementById('quiz-badge').textContent =
+            'Question ' + (currentQuizIndex + 1) + ' of ' + quizQuestions.length;
+          document.getElementById('quiz-question').textContent = q.question;
+
+          const answersDiv = document.getElementById('quiz-answers');
+          answersDiv.innerHTML = '';
+
+          document.getElementById('quiz-controls').style.display = 'none';
+
+          q.answers.forEach((answer, i) => {
+              const btn = document.createElement('button');
+              btn.className = 'quiz-answer';
+              btn.textContent = answer;
+              btn.onclick = () => handleQuizAnswer(btn, i, q.correct);
+              answersDiv.appendChild(btn);
+          });
+      }
+
+      function handleQuizAnswer(btn, selected, correct) {
+          if (quizAnswered) return;
+
+          if (selected === correct) {
+              quizAnswered = true;
+              btn.classList.add('correct');
+              document.querySelectorAll('.quiz-answer').forEach(b => b.disabled = true);
+              document.getElementById('quiz-controls').style.display = 'flex';
+          } else {
+              btn.classList.add('wrong');
+              btn.disabled = true;
+          }
+      }
+
+      function nextQuizQuestion() {
+          currentQuizIndex++;
+          renderQuizQuestion();
       }
 
       // Start the app

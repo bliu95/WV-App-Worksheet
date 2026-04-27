@@ -1,0 +1,205 @@
+{
+  "title": "Lists and Objects in Thunkable — Review Quiz",
+  "questions": [
+    {
+      "question": "What is the index of \"Fish\" in the list [Cat, Dog, Fish, Bird, Turtle]?",
+      "answers": [
+        "0",
+        "2",
+        "3",
+        "4"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "You use the block: `in list, get # 5`. What value is returned from the list [Cat, Dog, Fish, Bird, Turtle]?",
+      "answers": [
+        "Bird",
+        "Turtle",
+        "Fish",
+        "Dog"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "You use the block: `in list, set # 1 as \"Hamster\"`. What does the list [Cat, Dog, Fish, Bird, Turtle] look like now?",
+      "answers": [
+        "Cat, Hamster, Fish, Bird, Turtle",
+        "Hamster, Dog, Fish, Bird, Turtle",
+        "Cat, Dog, Fish, Bird, Hamster",
+        "Hamster, Cat, Dog, Fish, Bird"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "You use the block: `in list [Cat, Dog, Fish, Bird, Turtle], insert at last as \"Snake\"`. How many items are in the list now, and what is at index 6?",
+      "answers": [
+        "5 items; there is no index 6",
+        "6 items; Snake is at index 6",
+        "6 items; Snake is at index 1",
+        "5 items; Snake replaces Turtle"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "You use the block: `in list, remove # 1` on the list [Monday, Tuesday, Wednesday, Thursday]. What does the list look like now?",
+      "answers": [
+        "Monday, Wednesday, Thursday",
+        "Tuesday, Wednesday, Thursday",
+        "Monday, Tuesday, Thursday",
+        "Monday, Tuesday, Wednesday"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "Starting from the list [Monday, Tuesday, Wednesday, Thursday], you use: `in list, remove # 3`. What value is now at index 3?",
+      "answers": [
+        "Wednesday",
+        "Thursday",
+        "Tuesday",
+        "There is no index 3"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "Starting from the list [Monday, Tuesday, Wednesday, Thursday], you use: `in list, set # 4 as \"Friday\"`. What value is at index 4?",
+      "answers": [
+        "Thursday",
+        "Wednesday",
+        "Friday",
+        "Monday"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "Starting from the list [Monday, Tuesday, Wednesday, Thursday], you first use `in list, remove # 2` and then use `in list, get # 2`. What value is returned?",
+      "answers": [
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Monday"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "A list in Thunkable contains the values: 42, \"hello\", true. Is this allowed?",
+      "answers": [
+        "No — a list can only hold numbers",
+        "No — a list can only hold text",
+        "Yes — a list can contain multiple different data types at once",
+        "Yes — but only if the list has exactly 3 items"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "When you add a new item to a list in Thunkable, does the list automatically sort itself?",
+      "answers": [
+        "Yes, it sorts alphabetically",
+        "Yes, it sorts numerically",
+        "No, lists are not organized by default",
+        "Yes, it sorts by the order you added items, newest first"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "How do you access the value \"Soccer\" from an object with keys: name=Maya, sport=Soccer, age=16, team=Eagles?",
+      "answers": [
+        "Get index 2 of the object",
+        "Get property \"Soccer\" of the object",
+        "Get property \"sport\" of the object",
+        "Get item 2 from the object"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "You use the block: `set property \"team\" of object to \"Wolves\"` an object with keys: name=Maya, sport=Soccer, age=16, team=Eagles. What is the value of the \"team\" key now?",
+      "answers": [
+        "Eagles",
+        "Wolves",
+        "Maya",
+        "Soccer"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "You use the block: `get property \"age\" of object` on an object with keys: name=Maya, sport=Soccer, age=16, team=Eagles. What value is returned?",
+      "answers": [
+        "Maya",
+        "Soccer",
+        "16",
+        "Eagles"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "You want to add a new piece of information to this object: the player's jersey number is 7. What do you need to provide?",
+      "answers": [
+        "An index number and a value",
+        "A key and a value (a key-value pair)",
+        "Just the value 7",
+        "A list containing the number 7"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "What is the main difference between how lists and objects organize their data?",
+      "answers": [
+        "Lists use named keys; objects use numbered indexes",
+        "Lists use numbered indexes; objects use named keys",
+        "Lists can only hold text; objects can hold any type",
+        "Objects can hold more items than lists"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "You create an object with the fields: brand = \"Nike\", size = 10, color = \"Red\". You use the block: `get property \"brand\" of object`. What is returned?",
+      "answers": [
+        "Nike",
+        "10",
+        "Red",
+        "brand"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "You are building an app that keeps a to-do list of tasks (e.g., \"Buy milk\", \"Call mom\", \"Study for test\"). Which data structure is the best choice?",
+      "answers": [
+        "Object — because each task needs a named key",
+        "List — because it is a collection of similar items",
+        "Object — because tasks are related to each other",
+        "Neither — use a separate variable for each task"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "You are building an app that stores a single restaurant's details: name, address, phone number, and cuisine type. Which data structure is the best choice?",
+      "answers": [
+        "List — because it can store multiple values",
+        "Object — because the data is related and each piece has a descriptive label",
+        "List — because restaurant data is unordered",
+        "Object — because objects are always better than lists"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "You are building a music player app and need to store a queue of song titles that will play in order. Which data structure is the best choice?",
+      "answers": [
+        "Object — because songs have properties",
+        "List — because it is an ordered collection of similar values",
+        "Object — because the queue needs named keys",
+        "Neither — use an App variable"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "You are building a weather app and need to store today's forecast data: temperature, humidity, wind speed, and condition (e.g., \"Sunny\"). Which data structure is the best choice?",
+      "answers": [
+        "List — because you can use indexes to access each value",
+        "List — because weather data is simple",
+        "Object — because each piece of data has a clear label and they are all related",
+        "Object — because objects are faster than lists"
+      ],
+      "correct": 2
+    }
+  ]
+}
