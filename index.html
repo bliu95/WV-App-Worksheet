@@ -4,10 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>App Worksheet</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+      @keyframes gradientSlide {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+
       body {
-        font-family: "Segoe UI", system-ui, sans-serif;
-        background-color: #f0f2f5;
+        font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+        background-color: #e4ecf7;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -17,30 +26,30 @@
       }
 
       .card {
-        background: white;
+        background: #fff;
         width: 100%;
-        max-width: 800px;
-        border-radius: 12px;
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        max-width: 860px;
+        border-radius: 16px;
+        box-shadow: 0 4px 24px rgba(30, 80, 180, 0.10);
         overflow: hidden;
         display: flex;
         flex-direction: column;
-        border: 1px solid #e1e4e8;
+        border: 1px solid #c4d4ea;
       }
 
       /* Loading Screen */
       .loading-state {
         padding: 40px;
         text-align: center;
-        color: #666;
-        font-size: 1.2rem;
-        display: none; /* Hidden by default */
+        color: #888;
+        font-size: 1.1rem;
+        display: none;
       }
 
       /* 1. Header (Title) */
       .header-section {
         padding: 1rem 1.5rem;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid #c4d4ea;
         background: #fff;
         display: flex;
         justify-content: space-between;
@@ -60,12 +69,12 @@
       }
 
       .step-badge {
-        background-color: #e3f2fd;
-        color: #0d47a1;
+        background: linear-gradient(135deg, #d0e2f7, #b8d0f0);
+        color: #1a5fb4;
         font-size: 0.75rem;
         font-weight: 700;
         padding: 4px 10px;
-        border-radius: 4px;
+        border-radius: 20px;
         text-transform: uppercase;
         letter-spacing: 1px;
         display: inline-block;
@@ -74,7 +83,7 @@
 
       h2 {
         margin: 0;
-        color: #202124;
+        color: #1a2a40;
         font-size: 1.4rem;
       }
 
@@ -88,21 +97,21 @@
 
       /* 2. Image Component */
       .image-section {
-        background-color: #f8f9fa;
+        background-color: #eef3fa;
         width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
         padding: 1rem 0;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid #c4d4ea;
         min-height: 300px;
       }
 
       .image-section img {
         max-width: 95%;
         max-height: 400px;
-        border-radius: 6px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        border-radius: 8px;
+        box-shadow: 0 2px 12px rgba(30, 80, 180, 0.08);
         object-fit: contain;
         display: none;
       }
@@ -110,8 +119,8 @@
       /* 3. Text Component */
       .text-section {
         padding: 2rem;
-        color: #3c4043;
-        line-height: 1.6;
+        color: #2c3e50;
+        line-height: 1.7;
         font-size: 1.05rem;
         flex-grow: 1;
         min-height: 100px;
@@ -121,26 +130,26 @@
       .block-intro {
         margin-top: 1.5rem;
         padding: 1rem;
-        background-color: #f8f9fa;
-        border-radius: 8px;
-        border-left: 4px solid #1a73e8;
+        background-color: #eef3fa;
+        border-radius: 10px;
+        border-left: 4px solid #2563eb;
       }
 
       .block-intro-header {
         font-weight: bold;
         margin-bottom: 0.5rem;
-        color: #202124;
+        color: #1a2a40;
       }
 
       .block-intro img {
         max-width: 100%;
         max-height: 300px;
         margin: 0.5rem 0;
-        border-radius: 4px;
+        border-radius: 6px;
       }
 
       .block-intro-description {
-        color: #5f6368;
+        color: #5a6d80;
         font-size: 0.95rem;
       }
 
@@ -150,90 +159,124 @@
         justify-content: space-between;
         padding: 1.25rem 2rem;
         background-color: #fff;
-        border-top: 1px solid #eee;
+        border-top: 1px solid #c4d4ea;
       }
 
       button {
-        background-color: #1a73e8;
+        background: linear-gradient(135deg, #2f6fce, #2563eb);
         color: white;
         border: none;
         padding: 10px 24px;
-        border-radius: 6px;
+        border-radius: 8px;
+        font-family: inherit;
         font-size: 1rem;
-        font-weight: 500;
+        font-weight: 600;
         cursor: pointer;
-        transition: background 0.2s;
+        transition: transform 0.15s, box-shadow 0.2s, opacity 0.2s;
       }
 
-      button:hover { background-color: #1557b0; }
-      button:disabled { background-color: #dadce0; color: #80868b; cursor: not-allowed; }
+      button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+      }
+
+      button:disabled {
+        background: #c0ccd8;
+        color: #8294a5;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+      }
 
       select {
         padding: 6px 10px;
-        border-radius: 4px;
-        border: 1px solid #ccc;
+        border-radius: 8px;
+        border: 1px solid #a8bed6;
+        font-family: inherit;
         font-size: 0.9rem;
+        background: #eef3fa;
+        color: #2c3e50;
+      }
+
+      select:focus {
+        outline: none;
+        border-color: #2563eb;
+        box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
       }
 
       /* Week Picker Landing Page */
       .week-picker {
-        padding: 2rem;
+        padding: 2.5rem 2rem;
         text-align: center;
       }
 
       .week-picker h1 {
-        margin: 0 0 0.5rem 0;
-        color: #202124;
-        font-size: 1.6rem;
+        margin: 0 0 1.5rem 0;
+        color: transparent;
+        font-size: 1.8rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        background: linear-gradient(135deg, #1a5fb4, #2563eb, #3b82f6);
+        background-size: 200% 200%;
+        animation: gradientSlide 8s ease infinite;
+        -webkit-background-clip: text;
+        background-clip: text;
       }
 
       .week-picker h1 + .week-grid + h1 {
-        margin-top: 2rem;
-      }
-
-      .week-picker p {
-        color: #5f6368;
-        margin: 0 0 1.5rem 0;
+        margin-top: 3rem;
       }
 
       .week-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-        gap: 12px;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 14px;
       }
 
       .week-btn {
-        padding: 16px 12px;
-        border-radius: 8px;
-        font-size: 1rem;
+        padding: 20px 14px;
+        border-radius: 12px;
+        font-size: 0.95rem;
         font-weight: 600;
+        background: #eef3fa;
+        color: #2c3e50;
+        border: 1px solid #b4c8de;
+        transition: transform 0.2s, background 0.2s, border-color 0.2s, box-shadow 0.2s;
+      }
+
+      .week-btn:hover {
+        background: #dbe6f4;
+        border-color: #5a8ec4;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(37, 99, 235, 0.18);
+        color: #1a2a40;
       }
 
       .week-btn-sub {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
         font-weight: 400;
-        opacity: 0.85;
+        opacity: 0.55;
       }
 
       .back-btn {
         background: none;
-        color: #1a73e8;
+        color: #2563eb;
         border: none;
-        padding: 4px 8px;
+        padding: 4px 10px;
         font-size: 0.85rem;
         cursor: pointer;
-        font-weight: 500;
+        font-weight: 600;
+        border-radius: 6px;
       }
 
       .back-btn:hover {
-        background: #e8f0fe;
-        border-radius: 4px;
+        background: #dbe6f4;
       }
 
       /* Quiz styles */
       .quiz-header {
         padding: 1rem 1.5rem;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid #c4d4ea;
         background: #fff;
         display: flex;
         justify-content: space-between;
@@ -243,8 +286,8 @@
 
       .quiz-question {
         padding: 2rem;
-        color: #3c4043;
-        line-height: 1.6;
+        color: #1a2a40;
+        line-height: 1.7;
         font-size: 1.15rem;
         font-weight: 500;
       }
@@ -260,33 +303,35 @@
         width: 100%;
         text-align: left;
         padding: 14px 18px;
-        border-radius: 8px;
+        border-radius: 10px;
         font-size: 1rem;
         font-weight: 500;
-        background-color: #f0f2f5;
-        color: #202124;
-        border: 2px solid transparent;
-        transition: background 0.2s, border-color 0.2s;
+        background: #fff;
+        color: #2c3e50;
+        border: 2px solid #b4c8de;
+        transition: background 0.2s, border-color 0.2s, transform 0.15s;
       }
 
       .quiz-answer:hover:not(:disabled) {
-        background-color: #e3f2fd;
-        border-color: #1a73e8;
+        background: #dbe6f4;
+        border-color: #5a8ec4;
+        transform: translateY(-1px);
       }
 
       .quiz-answer:disabled {
         cursor: not-allowed;
         opacity: 0.7;
+        transform: none;
       }
 
       .quiz-answer.correct {
-        background-color: #e6f4ea;
+        background: #e6f4ea;
         border-color: #34a853;
         color: #1e7e34;
       }
 
       .quiz-answer.wrong {
-        background-color: #fce8e6;
+        background: #fce8e6;
         border-color: #ea4335;
         color: #c5221f;
       }
@@ -294,7 +339,7 @@
       .quiz-complete {
         padding: 3rem 2rem;
         text-align: center;
-        color: #202124;
+        color: #1a2a40;
       }
 
       .quiz-complete h2 {
@@ -303,7 +348,7 @@
       }
 
       .quiz-complete p {
-        color: #5f6368;
+        color: #5a6d80;
         margin-bottom: 1.5rem;
       }
 
@@ -336,6 +381,22 @@
         <div id="quiz-controls" class="controls" style="display: none;">
           <div></div>
           <button id="quiz-next-btn" onclick="nextQuizQuestion()">Next</button>
+        </div>
+      </div>
+
+      <!-- External Lesson View -->
+      <div id="external-content" style="display: none;">
+        <div class="quiz-header">
+          <div class="header-left">
+            <h2 id="external-title"></h2>
+          </div>
+          <div class="header-right">
+            <button class="back-btn" onclick="showWeekPicker()">All Activities</button>
+          </div>
+        </div>
+        <div class="text-section" style="text-align: center;">
+          <p>Follow the instructions on the Google Doc:</p>
+          <p><a id="external-link" href="" target="_blank" style="font-size: 1.1rem;">Open Google Doc</a></p>
         </div>
       </div>
 
@@ -391,6 +452,17 @@
       let currentQuizIndex = 0;
       let quizAnswered = false;
 
+      const externalLessons = {
+          "Week 1": {
+              name: "Intro to Thunkable",
+              url: "https://docs.google.com/document/d/1a2y7Bd2SU92oke_ljLAV2MeYOEnjChoplp-Q1MxO5hs/edit?tab=t.qvzce3ekmdfr#heading=h.lgmn96lyee3h",
+          },
+          "Week 3": {
+              name: "Data Table App",
+              url: "https://docs.google.com/document/d/1y3EaUvS6m13RFANcpdegZJpMg19dtOajbEf8it9bwOE/edit?tab=t.m8n3hes8um33#heading=h.lgmn96lyee3h",
+          },
+      };
+
       const lessonData = {
           "Week 2": "./Weeks/Week 2/w2_guide.md",
           "Week 4": "./Weeks/Week 4/w4_guide.md",
@@ -421,24 +493,55 @@
           return Object.keys(lessonData).find(w => weekToSlug(w) === slug) || null;
       }
 
+      function slugToExternalLesson(slug) {
+          return Object.keys(externalLessons).find(w => weekToSlug(w) === slug) || null;
+      }
+
+      function selectExternalLesson(week) {
+          window.location.hash = weekToSlug(week);
+      }
+
+      function showExternalLesson(week) {
+          const lesson = externalLessons[week];
+          document.getElementById('external-title').textContent = lesson.name + ' (' + week + ')';
+          document.getElementById('external-link').href = lesson.url;
+          document.getElementById('week-picker').style.display = 'none';
+          document.getElementById('main-content').style.display = 'none';
+          document.getElementById('quiz-content').style.display = 'none';
+          document.getElementById('external-content').style.display = '';
+
+      }
+
       // Initialize
       function init() {
           const weekSelect = document.getElementById('week-select');
           const weekGrid = document.getElementById('week-grid');
 
-          // Populate the Week Dropdown and Week Picker grid
-          Object.keys(lessonData).forEach(week => {
-              const option = document.createElement('option');
-              option.value = week;
-              option.textContent = week;
-              weekSelect.appendChild(option);
+          // Combine all weeks and sort by week number
+          const allWeeks = [
+              ...Object.keys(externalLessons).map(w => ({ week: w, type: 'external' })),
+              ...Object.keys(lessonData).map(w => ({ week: w, type: 'lesson' })),
+          ].sort((a, b) => parseInt(a.week.replace('Week ', '')) - parseInt(b.week.replace('Week ', '')));
 
+          allWeeks.forEach(({ week, type }) => {
+              const weekNum = week.replace('Week ', '');
               const btn = document.createElement('button');
               btn.className = 'week-btn';
-              const name = lessonNames[week] || week;
-              const weekNum = week.replace('Week ', '');
-              btn.innerHTML = name + '<br><span class="week-btn-sub">(Week ' + weekNum + ')</span>';
-              btn.onclick = () => selectWeek(week);
+
+              if (type === 'external') {
+                  const lesson = externalLessons[week];
+                  btn.innerHTML = lesson.name + '<br><span class="week-btn-sub">(Week ' + weekNum + ')</span>';
+                  btn.onclick = () => selectExternalLesson(week);
+              } else {
+                  const option = document.createElement('option');
+                  option.value = week;
+                  option.textContent = week;
+                  weekSelect.appendChild(option);
+
+                  const name = lessonNames[week] || week;
+                  btn.innerHTML = name + '<br><span class="week-btn-sub">(Week ' + weekNum + ')</span>';
+                  btn.onclick = () => selectWeek(week);
+              }
               weekGrid.appendChild(btn);
           });
 
@@ -477,7 +580,9 @@
           history.pushState(null, '', window.location.pathname);
           document.getElementById('main-content').style.display = 'none';
           document.getElementById('quiz-content').style.display = 'none';
+          document.getElementById('external-content').style.display = 'none';
           document.getElementById('week-picker').style.display = '';
+
       }
 
       function handleHashChange() {
@@ -490,16 +595,25 @@
                       document.getElementById('week-picker').style.display = 'none';
                       document.getElementById('main-content').style.display = 'none';
                       document.getElementById('quiz-content').style.display = '';
+            
                       loadQuiz(quizName);
                       return;
                   }
+              }
+              // Check for external lesson hash
+              const extWeek = slugToExternalLesson(hash);
+              if (extWeek) {
+                  showExternalLesson(extWeek);
+                  return;
               }
               const week = slugToWeek(hash);
               if (week) {
                   document.getElementById('week-select').value = week;
                   document.getElementById('week-picker').style.display = 'none';
                   document.getElementById('quiz-content').style.display = 'none';
+                  document.getElementById('external-content').style.display = 'none';
                   document.getElementById('main-content').style.display = '';
+        
                   handleWeekChange();
                   return;
               }
@@ -507,7 +621,9 @@
           // No valid hash — show the picker
           document.getElementById('main-content').style.display = 'none';
           document.getElementById('quiz-content').style.display = 'none';
+          document.getElementById('external-content').style.display = 'none';
           document.getElementById('week-picker').style.display = '';
+
       }
 
       window.addEventListener('hashchange', handleHashChange);
